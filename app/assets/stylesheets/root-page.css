@@ -1,0 +1,11 @@
+#root-map {
+  float: right;
+  height: 600px;
+  width: 35%;
+}
+
+.root-sidebar {
+  float: left;
+  width: 65%;
+  height: 600px;
+}
