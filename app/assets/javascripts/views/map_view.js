@@ -22,15 +22,7 @@ ShutterStep.Views.MapView = Backbone.View.extend({
   attachMapListeners: function () {
     google.maps.event.addListener(this._map, 'idle', this.search.bind(this));
     google.maps.event.addListener(this._map, 'click', this.createPictureForm.bind(this));
-
-    google.maps.event.addListener(submitWindow, 'domready', function ()
-    {
-      $("#picture-form").submit(function(event)
-      {
-        event.preventDefault();
-      }
-    });
-},
+  },
 
   addMarker: function (picture) {
     if (this._markers[picture.id]) { return };
@@ -67,6 +59,14 @@ ShutterStep.Views.MapView = Backbone.View.extend({
     });
     this._map.panTo(clickPosition);
     this._submitWindow.open(this._map);
+  },
+
+  events: {
+    "submit": "createPicture"
+  },
+
+  createPicture: function() {
+
   },
 
   search: function () {
