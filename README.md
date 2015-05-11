@@ -1,8 +1,8 @@
-# Flux-capacitr
+# Shutter Step
 
 [Heroku link][heroku]
 
-[heroku]: http://shutter-up.herokuapp.com
+[heroku]: http://shutter-step.herokuapp.com
 GO SEE MY APP WHOOOOOOOTT
 
 ## Minimum Viable Product
