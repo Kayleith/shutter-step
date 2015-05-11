@@ -1,0 +1,158 @@
+.sign-in {
+  position: relative;
+  background: #3B5998;
+  color: #fff;
+  border-bottom: 1px solid black;
+  z-index: 1;
+}
+
+.sign-in-nav {
+  margin: auto;
+  width: 980px;
+  height: 82px;
+}
+
+.sign-in-nav-logo {
+  float: left;
+  font-size: 36px;
+  font-weight: 700;
+  margin-top: 30px;
+}
+
+.sign-in-ul {
+  float: right;
+}
+.sign-in-ul li{
+  float: left;
+  margin-top: 15px;
+}
+.sign-in-form {
+  margin-top: 5px;
+  background: white;
+  color: black;
+  border: 1px solid black;
+  height: 21px;
+  width: 148px;
+}
+
+.sign-in-text {
+  font-size: 12px;
+  margin-right: 11px;
+}
+
+.sign-in-btn {
+  border: 1px solid #19356E;
+  font-size: 12px;
+  padding: 2px 6px 4px 5px;
+  font-weight: 700;
+  background: #5973A9;
+  margin-top: 19px;
+  margin-left: 2px;
+  margin-right: 9px;
+}
+
+.sign-in-background {
+  background: #EDF0F5;
+  height: 600px;
+}
+
+.sign-in-content {
+  position: relative;
+  width: 980px;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.sign-in-message {
+  float: left;
+  width: 565px;
+  height: 400px;
+  margin-right: 10px;
+}
+
+.sign-up-form {
+  float: left;
+  border-bottom: 1px solid #A0A9C0;
+}
+
+.sign-up-form h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.sign-up-form h2 {
+  font-size: 19px;
+  margin-bottom: 25px;
+}
+
+.sign-up-form input.fields {
+  padding-left: 10px;
+  background: white;
+  border: 1px solid #BDC8D9;
+  border-radius: 5px;
+  width: 387px;
+  height: 39px;
+  margin-bottom: 10px;
+}
+
+.sign-up-form input.name1 {
+  padding-left: 10px;
+  background: white;
+  border: 1px solid #BDC8D9;
+  border-radius: 5px;
+  width: 182px;
+  height: 39px;
+  margin-bottom: 10px;
+  margin-right: 8px;
+}
+
+.sign-up-form input.name2 {
+  padding-left: 10px;
+  background: white;
+  border: 1px solid #BDC8D9;
+  border-radius: 5px;
+  width: 182px;
+  height: 39px;
+  margin-bottom: 10px;
+}
+
+.sing-up-form label {
+  font-size: 18px;
+}
+
+.dob {
+  width: 300px;
+  height: 41px;
+}
+
+.sign-up-form select {
+  margin-top: 5px;
+  float: left;
+  background: transparent;
+  height: 32px;
+  font-size: 12px;
+  border: 1px solid #bdc7d8;
+}
+
+.sex-buttons {
+  height: 20px;
+}
+
+.sex-button {
+  float: left;
+  margin: 0px 10px;
+  font-size: 12px;
+}
+
+.sign-up-form button {
+  border: 1px solid #5F9D4D;
+  border-radius: 5px;
+  background: #5F9D4D;
+  text-shadow: 0 1px 2px rgba(0,0,0,.5);
+  color: white;
+  font-size: 12px;
+  padding: 7px 73px;
+  margin-bottom: 20px;
+}

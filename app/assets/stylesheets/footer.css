@@ -1,0 +1,30 @@
+.foot {
+  display: block;
+  width: 980px;
+  margin: 0 auto;
+  background: #fff;
+  color: #aaa;
+  font-size: 14px;
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+}
+
+.foot-copyright {
+  float: left;
+  padding: 20px;
+}
+
+.foot-links {
+  float: right;
+  padding: 0px 10px;
+}
+
+.foot-links > li{
+  float: left;
+  padding: 20px 10px;
+
+}
+
+.foot-links a:hover{
+  color: #000;
+}

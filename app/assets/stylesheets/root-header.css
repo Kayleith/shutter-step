@@ -1,0 +1,36 @@
+.root {
+  position: relative;
+  background: #3B5998;
+  color: #fff;
+  border-bottom: 1px solid black;
+  z-index: 1;
+}
+
+.root-nav {
+  margin: 0 auto;
+  width: 1166px;
+  height: 40px;
+  font-size: 12px;
+}
+
+.root-nav-features {
+  width: 960px;
+  float: left;
+}
+
+.root-nav-logo {
+  float: left;
+}
+
+.root-nav-logo img{
+  height: 40px;
+  width: auto;
+}
+
+.root-ul {
+  float: right;
+}
+
+.root-ul li{
+  float: left;
+}
