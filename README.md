@@ -2,7 +2,7 @@
 
 [Heroku link][heroku]
 
-[heroku]: http://flux-capacitr.herokuapp.com
+[heroku]: http://shutter-up.herokuapp.com
 
 ## Minimum Viable Product
 Flux-capacitr is a clone of Tumblr built on Rails and Backbone. Users can:
@@ -88,4 +88,3 @@ collections, but they will fetch from the new `search` routes.
 [phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md
-
