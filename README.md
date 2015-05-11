@@ -16,9 +16,9 @@ Shutter Step is social network that is a clone of facebook, but also has an adde
 - [ ] Create Profile Pages
 - [ ] View Pictures
 - [ ] Subscribe to Photographers
-- [ ] View a feed of subsribed and friends
+- [ ] View a feed of subscribed and friends
 - [ ] Add Friends
-- [ ] Search for Pages by friend name and photgrapher name
+- [ ] Search for Pages by friend name and photographer name
 - [ ] Search for pictures by location
 
 ## Design Docs
@@ -31,6 +31,9 @@ Shutter Step is social network that is a clone of facebook, but also has an adde
 ## Implementation Timeline
 
 ### Phase 1: User Authentication (~1 day)
-I will make up a sign up page
+I will make up a sign up page. Right now it will look like the Facebook page. But the design is old. I want a more modern scroll down look. Currently only available to those who have accounts. But eventually want to implement anyone can use the app, but only those with accounts can favorite and sucribe and upload their own pictures.
 
 [Details][phase-one]
+
+### Phase 2: Main Feed Page (~2 day)
+This is the bulk of the work. I want a scrolling feed on the left. Map on the right.
