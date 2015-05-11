@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :users, except: [:index, :edit]
 
   namespace :api, defaults: {format: :json} do
-    # resources(:root)
+    resources :pictures
   end
 end

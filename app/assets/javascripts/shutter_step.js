@@ -4,6 +4,8 @@ window.ShutterStep = {
   Views: {},
   Routers: {},
   initialize: function() {
+    new ShutterStep.Routers.MapRouter();
+    Backbone.history.start();
   }
 };
 
