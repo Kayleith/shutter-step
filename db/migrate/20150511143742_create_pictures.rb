@@ -9,5 +9,8 @@ class CreatePictures < ActiveRecord::Migration
       t.integer :lng, null: false
       t.timestamps null: false
     end
+    add_index :pictures, :lat
+    add_index :pictures, :lng
+    add_index :pictures, :user_id
   end
 end
