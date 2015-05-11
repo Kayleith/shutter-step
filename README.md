@@ -3,9 +3,10 @@
 [Heroku link][heroku]
 
 [heroku]: http://shutter-up.herokuapp.com
+GO SEE MY APP WHOOOOOOOTT
 
 ## Minimum Viable Product
-Flux-capacitr is a clone of Tumblr built on Rails and Backbone. Users can:
+Shutter Step is social network that is a clone of facebook, but also has an added feature that lets you mark down photos and thier gps coordinates. This allows other users to use google maps to go see your photos.
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
