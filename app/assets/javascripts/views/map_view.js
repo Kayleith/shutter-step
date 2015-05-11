@@ -10,11 +10,14 @@ ShutterStep.Views.MapView = Backbone.View.extend({
     this.setElement(".root-map");
     var mapOptions = {
           center: { lat: 40.72506754286412, lng: -73.99687752127647},
-          zoom: 12
+          zoom: 12,
+          disableDefaultUI: true
         };
     this._map = new google.maps.Map(this.el,mapOptions);
+
     this._infoWindow;
     this._submitWindow;
+
     this.collection.each(this.addMarker.bind(this));
     this.attachMapListeners();
   },
@@ -45,7 +48,7 @@ ShutterStep.Views.MapView = Backbone.View.extend({
     });
 
     google.maps.event.addListener(marker, 'click', function (event) {
-      view.showMarkerInfo(event, marker);
+      view.showMarkerInfo(event, marker, picture);
     });
 
     this._markers[picture.id] = marker;
@@ -109,14 +112,14 @@ ShutterStep.Views.MapView = Backbone.View.extend({
     delete this._markers[picture.id];
   },
 
-  showMarkerInfo: function (event, marker) {
+  showMarkerInfo: function (event, marker, picture) {
     // This event will be triggered when a marker is clicked. Right now it
     // simply opens an info window with the title of the marker. However, you
     // could get fancier if you wanted (maybe use a template for the content of
     // the window?)
     this.closeWindows();
     this._infoWindow = new google.maps.InfoWindow({
-      content: marker.title
+      content: JST['infoWindow']({picture: picture})
     });
 
     this._infoWindow.open(this._map, marker);
