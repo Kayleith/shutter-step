@@ -5,8 +5,8 @@ class CreatePictures < ActiveRecord::Migration
       t.string :title, null: false
       t.string :description
       t.string :url, null: false
-      t.integer :lat, null: false
-      t.integer :lng, null: false
+      t.float :lat, null: false
+      t.float :lng, null: false
       t.timestamps null: false
     end
     add_index :pictures, :lat

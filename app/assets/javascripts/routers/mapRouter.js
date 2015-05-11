@@ -4,6 +4,6 @@ ShutterStep.Routers.MapRouter = Backbone.Router.extend({
   },
 
   map: function() {
-    this._mapView = new ShutterStep.Views.MapView();
+    this._mapView = new ShutterStep.Views.MapView({collection: ShutterStep.pictures});
   }
 });

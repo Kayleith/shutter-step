@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20150511143742) do
     t.string   "title",       null: false
     t.string   "description"
     t.string   "url",         null: false
-    t.integer  "lat",         null: false
-    t.integer  "lng",         null: false
+    t.float    "lat",         null: false
+    t.float    "lng",         null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
