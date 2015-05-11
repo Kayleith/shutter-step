@@ -1,7 +1,7 @@
 module Api
   class PicturesController < ApiController
     def create
-      @picture = current_user.new(picture_params)
+      @picture = current_user.pictures.new(picture_params)
 
       if @picture.save
         render json: @picture

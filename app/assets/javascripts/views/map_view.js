@@ -28,7 +28,7 @@ ShutterStep.Views.MapView = Backbone.View.extend({
     if (this._markers[picture.id]) { return };
 
     var image = {
-      url: picture.url,
+      url: picture.get('url'),
       size: new google.maps.Size(30, 30),
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(0, 30),
@@ -40,7 +40,8 @@ ShutterStep.Views.MapView = Backbone.View.extend({
     var marker = new google.maps.Marker({
       position: { lat: picture.get('lat'), lng: picture.get('lng') },
       map: this._map,
-      title: picture.get('name')
+      title: picture.get('title'),
+      icon: image
     });
 
     google.maps.event.addListener(marker, 'click', function (event) {
@@ -65,8 +66,24 @@ ShutterStep.Views.MapView = Backbone.View.extend({
     "submit": "createPicture"
   },
 
-  createPicture: function() {
+  createPicture: function(event) {
+    event.preventDefault();
+    var position = this._submitWindow.position;
+    var values = $(event.target).serializeJSON();
+    var picture = new ShutterStep.Models.Picture({
+      lat: position.A,
+      lng: position.F
+    });
 
+    picture.save(values, {
+      success: function() {
+        this.collection.add(picture);
+        this.closeWindows();
+      }.bind(this),
+      error: function(error) {
+        alert(error);
+      }
+    });
   },
 
   search: function () {
@@ -102,7 +119,7 @@ ShutterStep.Views.MapView = Backbone.View.extend({
       content: marker.title
     });
 
-    infoWindow.open(this._map, marker);
+    this._infoWindow.open(this._map, marker);
   },
 
   closeWindows: function (id) {
