@@ -13,10 +13,6 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap-sprockets";
- @import "bootstrap";
- @import "font-awesome";
-
  html, body, header, nav, h1, a,
  ul, li, strong, main, button, i,
  section, img, div, h2, p, form,

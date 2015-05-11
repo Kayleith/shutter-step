@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
-//= require bootstrap
 //= require shutter_step
 //= require_tree ../templates
 //= require_tree ./utils
