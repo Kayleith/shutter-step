@@ -11,9 +11,18 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
     var mapOptions = {
           center: { lat: 40.72506754286412, lng: -73.99687752127647},
           zoom: 12,
-          disableDefaultUI: true
+          disableDefaultUI: true,
+          minZoom: 3
         };
+
     this._map = new google.maps.Map(this.el,mapOptions);
+    var styles = [{
+       "featureType": "poi",
+       "stylers": [{ "visibility": "off" }]
+      }];
+    this._map.setOptions({styles: styles});
+
+
     this._mc = new MarkerClusterer(this._map);
 
     this._infoWindow;
