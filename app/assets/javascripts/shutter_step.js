@@ -5,7 +5,9 @@ window.ShutterStep = {
   Routers: {},
   initialize: function() {
     ShutterStep.pictures = new ShutterStep.Collections.Pictures();
-    new ShutterStep.Routers.MapRouter();
+    ShutterStep.users = new ShutterStep.Collections.Users();
+
+    new ShutterStep.Routers.RootRouter();
     Backbone.history.start();
   }
 };

@@ -29,7 +29,10 @@ module Api
     def filter_options
       # Good to cover our bases with some defaults, in case no query string comes
       # in. :)
-      options = params[:filter_data] || {}
+      options = {
+        'lat' => [params[:lat1].to_f, params[:lat2].to_f],
+        'lng' => [params[:lng1].to_f, params[:lng2].to_f]
+      } || {}
       defaults = {
         'lat' => [40.611268808496895, 40.83867202705786],
         'lng' => [-74.119443744421, -73.87431129813194]
@@ -50,12 +53,12 @@ module Api
 
       if binds[:lng_min].to_f > binds[:lng_max].to_f
         # Wrap around the International Date Line
-        picture.where(<<-SQL, binds)
+        Picture.where(<<-SQL, binds)
           pictures.lng BETWEEN :lng_min AND 180
             OR pictures.lng BETWEEN -180 AND :lng_max
         SQL
       else
-        picture.where(<<-SQL, binds)
+        Picture.where(<<-SQL, binds)
           pictures.lat BETWEEN :lat_min AND :lat_max
             AND pictures.lng BETWEEN :lng_min AND :lng_max
         SQL

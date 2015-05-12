@@ -1,4 +1,4 @@
-ShutterStep.Views.MapView = Backbone.View.extend({
+ShutterStep.Views.MapView = Backbone.CompositeView.extend({
   initialize: function() {
     this._markers = {};
     this.listenTo(this.collection, 'add', this.addMarker);
@@ -14,11 +14,11 @@ ShutterStep.Views.MapView = Backbone.View.extend({
           disableDefaultUI: true
         };
     this._map = new google.maps.Map(this.el,mapOptions);
+    this._mc = new MarkerClusterer(this._map);
 
     this._infoWindow;
     this._submitWindow;
 
-    this.collection.each(this.addMarker.bind(this));
     this.attachMapListeners();
   },
 
@@ -50,7 +50,7 @@ ShutterStep.Views.MapView = Backbone.View.extend({
     google.maps.event.addListener(marker, 'click', function (event) {
       view.showMarkerInfo(event, marker, picture);
     });
-
+    this._mc.addMarker(marker);
     this._markers[picture.id] = marker;
   },
 
@@ -71,6 +71,7 @@ ShutterStep.Views.MapView = Backbone.View.extend({
 
   createPicture: function(event) {
     event.preventDefault();
+
     var position = this._submitWindow.position;
     var values = $(event.target).serializeJSON();
     var picture = new ShutterStep.Models.Picture({
@@ -79,7 +80,7 @@ ShutterStep.Views.MapView = Backbone.View.extend({
     });
 
     picture.save(values, {
-      success: function() {
+      success: function () {
         this.collection.add(picture);
         this.closeWindows();
       }.bind(this),
@@ -94,14 +95,13 @@ ShutterStep.Views.MapView = Backbone.View.extend({
     var southWest = bounds.getSouthWest();
     var northEast = bounds.getNorthEast();
 
-    var filterData = {
-      lat: [southWest.lat(), northEast.lat()],
-      lng: [southWest.lng(), northEast.lng()]
-    };
-
     this.collection.fetch({
        traditional: true,
-       data: { filter_data: filterData }
+       data: { lat1: southWest.lat(),
+               lat2: northEast.lat(),
+               lng1: southWest.lng(),
+               lng2: northEast.lng()
+             }
     });
   },
 
@@ -109,20 +109,20 @@ ShutterStep.Views.MapView = Backbone.View.extend({
     var marker = this._markers[picture.id];
     marker.setMap(null);
     google.maps.event.clearInstanceListeners(marker);
+    this._mc.removeMarker(marker);
     delete this._markers[picture.id];
   },
 
   showMarkerInfo: function (event, marker, picture) {
-    // This event will be triggered when a marker is clicked. Right now it
-    // simply opens an info window with the title of the marker. However, you
-    // could get fancier if you wanted (maybe use a template for the content of
-    // the window?)
-    this.closeWindows();
-    this._infoWindow = new google.maps.InfoWindow({
-      content: JST['infoWindow']({picture: picture})
+    var user = new ShutterStep.Models.User({id: picture.get("user_id")});
+    user.fetch({
+      success: function() {
+        this._infoWindow = new google.maps.InfoWindow({
+          content: JST['infoWindow']({picture: picture, user: user})
+        });
+        this._infoWindow.open(this._map, marker);
+      }.bind(this)
     });
-
-    this._infoWindow.open(this._map, marker);
   },
 
   closeWindows: function (id) {
