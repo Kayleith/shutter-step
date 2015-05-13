@@ -1,4 +1,4 @@
-ShutterStep.Views.FilterFeedViewItem = Backbone.CompositeView.extend({
+ShutterStep.Views.FilterFeedViewItem = Backbone.View.extend({
   template: JST['filterFeedViewItem'],
   tagName: 'li',
   className: 'picture-feed',

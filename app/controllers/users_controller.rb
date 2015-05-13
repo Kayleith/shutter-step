@@ -19,6 +19,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def search
+    if params[:query].present?
+      @users = User.where("username ~ ? OR first_name ~ ? OR last_name ~ ?", params[:query], params[:query], params[:query])
+    else
+      @users = nil
+    end
+    render json: @users
+  end
+
   def show
   end
   # PATCH/PUT /users/1

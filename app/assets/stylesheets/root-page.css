@@ -1,13 +1,14 @@
 .root-map {
-  float: right;
   height: 95vh;
   width: 38%;
+  min-width: 300px;
 }
 
 .root-sidebar {
   float: left;
   width: 62%;
   height: 95vh;
+  min-width: 300px;
 }
 
 .root-filter-options {

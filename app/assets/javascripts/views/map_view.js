@@ -52,12 +52,12 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
     var marker = new google.maps.Marker({
       position: { lat: picture.get('lat'), lng: picture.get('lng') },
       map: this._map,
-      title: picture.get('title'),
+      title: picture.id.toString(),
       icon: image
     });
 
     google.maps.event.addListener(marker, 'click', function (event) {
-      view.showMarkerInfo(event, marker, picture);
+      view.showMarkerInfo(event, marker);
     });
     this._mc.addMarker(marker);
     this._markers[picture.id] = marker;
@@ -122,16 +122,23 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
     delete this._markers[picture.id];
   },
 
-  showMarkerInfo: function (event, marker, picture) {
+  showMarkerInfo: function (event, marker) {
+    var picture = this.collection.get(parseInt(marker.title));
     var user = new ShutterStep.Models.User({id: picture.get("user_id")});
     user.fetch({
       success: function() {
+        this.closeWindows();
         this._infoWindow = new google.maps.InfoWindow({
           content: JST['infoWindow']({picture: picture, user: user})
         });
         this._infoWindow.open(this._map, marker);
       }.bind(this)
     });
+  },
+
+  showPicture: function(event, id) {
+    var marker = this._markers[id];
+    this.showMarkerInfo(event, marker);
   },
 
   closeWindows: function (id) {

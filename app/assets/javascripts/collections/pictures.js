@@ -3,6 +3,6 @@ ShutterStep.Collections.Pictures = Backbone.Collection.extend({
   model: ShutterStep.Models.Picture,
 
   getOrFetch: function(id) {
-
+    
   }
 });

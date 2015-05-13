@@ -1,0 +1,20 @@
+<nav class="root-nav group">
+  <section class="root-nav-features">
+    <a class="root-nav-logo" href=#>
+      <img src="<%= ShutterStep.logo %>"/>
+    </a>
+    <ul class="root-ul group">
+      <li>
+
+      </li>
+      <li>
+        <form action="/session" method="post">
+          <input type="hidden" name="authenticity_token" value="<%= $('meta[name=csrf-token]').attr('content') %>">
+
+          <input type="hidden" name="_method" value="DELETE">
+          <button>Sign Out<button>
+        </form>
+      </li>
+    </ul>
+  </section>
+</nav>
