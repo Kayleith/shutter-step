@@ -11,37 +11,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150511143742) do
+ActiveRecord::Schema.define(version: 20150514140226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "pictures", force: :cascade do |t|
-    t.integer  "user_id",     null: false
-    t.string   "title",       null: false
+    t.integer  "user_id",                     null: false
+    t.string   "title",                       null: false
     t.string   "description"
-    t.string   "url",         null: false
-    t.float    "lat",         null: false
-    t.float    "lng",         null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "url",                         null: false
+    t.float    "lat",                         null: false
+    t.float    "lng",                         null: false
+    t.boolean  "private",     default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "pictures", ["lat"], name: "index_pictures_on_lat", using: :btree
   add_index "pictures", ["lng"], name: "index_pictures_on_lng", using: :btree
   add_index "pictures", ["user_id"], name: "index_pictures_on_user_id", using: :btree
 
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
+  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
+  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
+
   create_table "users", force: :cascade do |t|
-    t.string   "first_name",      null: false
-    t.string   "last_name",       null: false
-    t.string   "username",        null: false
-    t.string   "email",           null: false
-    t.date     "birthday",        null: false
-    t.string   "sex",             null: false
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "first_name",                      null: false
+    t.string   "last_name",                       null: false
+    t.string   "username",                        null: false
+    t.string   "email",                           null: false
+    t.date     "birthday",                        null: false
+    t.string   "sex",                             null: false
+    t.string   "password_digest",                 null: false
+    t.string   "session_token",                   null: false
+    t.boolean  "private",         default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

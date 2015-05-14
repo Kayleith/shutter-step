@@ -7,6 +7,7 @@ class CreatePictures < ActiveRecord::Migration
       t.string :url, null: false
       t.float :lat, null: false
       t.float :lng, null: false
+      t.boolean :private, default: false
       t.timestamps null: false
     end
     add_index :pictures, :lat

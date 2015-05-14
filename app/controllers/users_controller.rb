@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :require_signed_out!, only: [:new]
+  before_action :require_signed_in!, only: [:edit, :update, :destroy,
+                                        :following, :followers]
 
   def new
     @user = User.new
@@ -29,6 +31,18 @@ class UsersController < ApplicationController
   end
 
   def show
+  end
+
+  def following
+    @user  = User.find(params[:id])
+    @users = @user.following.page(params[:page])
+    render json: @users
+  end
+
+  def followers
+    @user  = User.find(params[:id])
+    @users = @user.followers.page(params[:page])
+    render json: @users
   end
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json

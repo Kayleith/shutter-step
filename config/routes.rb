@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   get '/main', to: 'root#main', as: "main"
   get '/users/search', to: 'users#search', as: "searchUser"
   resource :session, only: [:new, :create, :destroy]
-  resources :users, except: [:index, :edit]
+  resources :users, except: [:index] do
+    member do
+      get :following, :followers
+    end
+  end
   get '/api/pictures/search', to: 'api/pictures#search', as: "searchPicture"
   namespace :api, defaults: {format: :json} do
     resources :pictures

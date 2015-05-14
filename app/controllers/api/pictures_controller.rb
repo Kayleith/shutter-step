@@ -17,12 +17,25 @@ module Api
     end
 
     def index
-      render json: Picture.all
+      @pictures = Picture.all.page(params[:page])
+      render :json => {
+        :models => @pictures,
+        :page => params[:page],
+        :total_pages => @pictures.total_pages # thanks kaminari!
+      }
     end
 
     def search
-      @pictures = filter_pictures(filter_options)
-      render json: @pictures
+      # @pictures = filter_pictures(filter_options)
+      # render json: @pictures.page(params[:page])
+      @pictures = Picture.all.page(params[:page]).per(20)
+      picture_totals = Picture.all.count
+      render :json => {
+        :models => @pictures,
+        :page => params[:page],
+        :picture_total => picture_totals,
+        :total_pages => @pictures.total_pages # thanks kaminari!
+      }
     end
 
     private

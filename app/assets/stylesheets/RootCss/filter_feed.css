@@ -1,9 +1,9 @@
 .picture-feed {
   float: left;
-  width: 20%;
-  height: 20%;
+  width: 50%;
+  height: 50%;
   text-align: center;
-  min-width: 90px;
+  min-width: 300px;
 }
 
 .thumb {
@@ -19,5 +19,20 @@
 
 .thumb > img {
   border-radius: 5px;
-  height: 50px;
+  max-height: 164px;
+}
+.results-number {
+  margin: 50px auto;
+}
+
+.filter-padding {
+  margin: 50px auto;
+}
+
+.pages-out-of-total {
+
+}
+
+.number-of-results {
+
 }

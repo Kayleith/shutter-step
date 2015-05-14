@@ -15,6 +15,7 @@ gem 'ejs'
 gem 'rails_12factor'
 ruby '2.1.2'
 gem 'faker'
+gem 'kaminari'
 group :doc do
   gem 'sdoc', require: false
 end

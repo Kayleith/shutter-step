@@ -1,18 +1,19 @@
 ShutterStep.Views.MapView = Backbone.CompositeView.extend({
-  initialize: function() {
+  initialize: function(options) {
     this._markers = {};
     this.listenTo(this.collection, 'add', this.addMarker);
     this.listenTo(this.collection, 'remove', this.removeMarker);
     google.maps.event.addDomListener(window, 'load', this.initMap.bind(this));
+    this.parent = options.parent;
   },
 
   initMap: function() {
     this.setElement(".root-map");
     var mapOptions = {
           center: { lat: 40.72506754286412, lng: -73.99687752127647},
-          zoom: 12,
+          zoom: 2,
           disableDefaultUI: true,
-          minZoom: 3
+          minZoom: 2
         };
 
     this._map = new google.maps.Map(this.el,mapOptions);
@@ -28,11 +29,12 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
     this._infoWindow;
     this._submitWindow;
 
+    this.parent.startData();
     this.attachMapListeners();
   },
 
   attachMapListeners: function () {
-    google.maps.event.addListener(this._map, 'idle', this.search.bind(this));
+    // google.maps.event.addListener(this._map, 'idle', this.search.bind(this));
     google.maps.event.addListener(this._map, 'click', this.createPictureForm.bind(this));
   },
 
@@ -160,5 +162,9 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
   stopBounce: function (id) {
     var marker = this._markers[id];
     marker.setAnimation(null);
+  },
+
+  zoom: function(num) {
+    this._map.setZoom(num);
   }
 });
