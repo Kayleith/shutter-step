@@ -13,6 +13,7 @@
   margin: 8px 10px;
   background:white;
   border-radius: 5px;
+  padding-left: 10px;
 }
 .user-results {
   display:block;
@@ -21,6 +22,11 @@
   left: 60px;
   top: 33px;
   background: transparent;
+  max-height: 300px;
+  overflow-y: auto;
+  border-bottom: 1px solid black;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 .result {
   padding: 10px 0;
@@ -29,20 +35,25 @@
   background: white;
   color:black;
 }
+.result:hover {
+  background: #E9EAED;
+}
 .result:first-child {
   border-top: 1px solid black;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
 }
-.result:last-child {
-  border-bottom: 1px solid black;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
+.user-search-name {
+
+}
+.user-search-username {
+
 }
 .root button {
  cursor:pointer;
 }
-/*background: '#E9EAED';*/
+
+
 .root-nav {
   position: relative;
   margin: 0 auto;

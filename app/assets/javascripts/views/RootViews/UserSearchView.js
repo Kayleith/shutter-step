@@ -29,7 +29,7 @@ ShutterStep.Views.UserSearchView = Backbone.CompositeView.extend({
     this.parent.eachSubview(function (subview) {
       subview.remove();
     });
-    users.forEach(function(user) {
+    this.collection.each(function(user) {
       var resultView = new ShutterStep.Views.ResultView({model: user});
       this.parent.addSubview(".user-results", resultView);
     }.bind(this))

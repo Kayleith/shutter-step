@@ -14,9 +14,10 @@
   border: 1px solid #000;
   border-radius: 5px;
   margin: auto;
+  overflow: hidden;
 }
 
 .thumb > img {
   border-radius: 5px;
-  height: 100%;
+  height: 50px;
 }

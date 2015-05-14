@@ -1,6 +1,7 @@
 ShutterStep.Routers.RootRouter = Backbone.Router.extend({
   routes: {
-    "": "root"
+    "": "root",
+    "users/:id": "userProfile"
   },
 
   initialize: function(options) {
@@ -13,6 +14,16 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
   root: function() {
     var rootView = new ShutterStep.Views.RootView({collection: ShutterStep.pictures });
     this._swapView(rootView);
+  },
+
+  userProfile: function(id) {
+    var user = new ShutterStep.Models.User({id: id});
+    user.fetch({
+      success: function() {
+        var userView = new ShutterStep.Views.UserView({model: user});
+        this._swapView(userView);
+      }.bind(this)
+    });
   },
 
   _swapView: function (view) {

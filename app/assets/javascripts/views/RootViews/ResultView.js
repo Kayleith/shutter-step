@@ -7,5 +7,13 @@ ShutterStep.Views.ResultView = Backbone.CompositeView.extend({
     var content = this.template({model: this.model});
     this.$el.html(content);
     return this
+  },
+
+  events: {
+    "click": "openProfile"
+  },
+
+  openProfile: function() {
+    Backbone.history.navigate("#users/" + this.model.id, {trigger: true});
   }
 });
