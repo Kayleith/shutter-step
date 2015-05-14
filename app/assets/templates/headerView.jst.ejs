@@ -1,8 +1,14 @@
 <nav class="root-nav group">
   <section class="root-nav-features">
     <a class="root-nav-logo" href=#>
-      <img src="<%= ShutterStep.logo %>"/>
+      <img
+      src="<%= ShutterStep.logo %>"/>
     </a>
+
+    <input class="root-user-search" type="text" name="name"/>
+    <ul class="user-results"></ul>
+    <button class="user-search">search</button>
+
     <ul class="root-ul group">
       <li>
 
@@ -10,9 +16,8 @@
       <li>
         <form action="/session" method="post">
           <input type="hidden" name="authenticity_token" value="<%= $('meta[name=csrf-token]').attr('content') %>">
-
           <input type="hidden" name="_method" value="DELETE">
-          <button>Sign Out<button>
+          <button>Sign Out</button>
         </form>
       </li>
     </ul>

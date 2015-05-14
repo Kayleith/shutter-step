@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     else
       @users = nil
     end
-    render json: @users
+    render :search
   end
 
   def show
