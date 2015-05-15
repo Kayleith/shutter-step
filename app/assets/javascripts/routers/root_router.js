@@ -6,9 +6,7 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
 
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
-
-    var users = new ShutterStep.Collections.UsersSearch();
-    this._headerView = new ShutterStep.Views.HeaderView({collection: users});
+    this._headerView = new ShutterStep.Views.HeaderView({collection: ShutterStep.searchusers});
   },
 
   root: function() {

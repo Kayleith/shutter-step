@@ -52,6 +52,9 @@ Backbone.CompositeView = Backbone.View.extend({
   },
 
   remove: function () {
+    if(this._mapView) {
+      this._mapView.remove();
+    }
     Backbone.View.prototype.remove.call(this);
     this.eachSubview(function (subview) {
       subview.remove();

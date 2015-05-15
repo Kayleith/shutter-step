@@ -15,8 +15,9 @@
   border-radius: 5px;
   padding-left: 10px;
 }
+
 .user-results {
-  display:block;
+  display: none;
   position: absolute;
   width: 500px;
   left: 60px;
@@ -28,6 +29,11 @@
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
 }
+
+.visible {
+  display: block;
+}
+
 .result {
   padding: 10px 0;
   border-left: 1px solid black;

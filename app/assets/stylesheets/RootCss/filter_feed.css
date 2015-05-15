@@ -21,13 +21,6 @@
   border-radius: 5px;
   max-height: 164px;
 }
-.results-number {
-  margin: 50px auto;
-}
-
-.filter-padding {
-  margin: 50px auto;
-}
 
 .pages-out-of-total {
 
@@ -35,4 +28,19 @@
 
 .number-of-results {
 
+}
+
+.root-filter-feed-item {
+
+}
+.paginate-buttons {
+  margin-bottom: 20px;
+}
+
+.paginate-buttons button{
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border: 1px solid #FF0000;
+  background: #E9EAED;
 }

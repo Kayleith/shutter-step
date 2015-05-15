@@ -4,9 +4,10 @@ window.ShutterStep = {
   Views: {},
   Routers: {},
   initialize: function() {
-    ShutterStep.pictures = new ShutterStep.Collections.Pictures();
+    ShutterStep.loaded = false;
+    ShutterStep.searchusers = new ShutterStep.Collections.UsersSearch();
     ShutterStep.users = new ShutterStep.Collections.Users();
-
+    ShutterStep.pictures = new ShutterStep.Collections.Pictures();
     new ShutterStep.Routers.RootRouter({$rootEl: $(".currentView")});
     Backbone.history.start();
   }

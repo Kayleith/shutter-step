@@ -7,7 +7,7 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
     this.parent = options.parent;
   },
 
-  initMap: function() {
+  initMap: function(event) {
     this.setElement(".root-map");
     var mapOptions = {
           center: { lat: 40.72506754286412, lng: -73.99687752127647},
@@ -15,7 +15,6 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
           disableDefaultUI: true,
           minZoom: 2
         };
-
     this._map = new google.maps.Map(this.el,mapOptions);
     var styles = [{
        "featureType": "poi",
@@ -29,7 +28,7 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
     this._infoWindow;
     this._submitWindow;
 
-    this.parent.startData();
+    this.parent.updateData();
     this.attachMapListeners();
   },
 
