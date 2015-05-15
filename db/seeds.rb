@@ -24,14 +24,41 @@ bot1 = User.create({first_name: "wiki",
      birthday: Faker::Date.backward(36500),
      sex: rand(2) == 1 ? "Male" : "Female"})
 end
+usernumber = User.all.count
 
-500.times do
+require 'json'
+require 'open-uri'
+
+gallery = JSON.parse(open('http://imgur.com/gallery.json').read)['gallery']
+
+# construct URLs
+gallery.each {|i| i['url'] = "http://imgur.com/#{i['hash']}#{i['ext']}" }
+
+# select images that aren't too big
+gallery.select {|i| i['size'] < 200_000 }
+# or images that aren't too small
+gallery.select {|i| i['width'] > 400 && i['height'] > 400 }
+
+# select only PNG images
+gallery.select {|i| i['ext'] == '.png'}
+
+3000.times do
   Picture.create(
-    user_id: (rand(User.all.count) + 1),
-    title: Faker::Hacker.ingverb,
+    user_id: (rand(usernumber) + 1),
+    title: Faker::HipsterIpsum.words(4),
     description: Faker::Hacker.say_something_smart,
-    url: "http://lorempixel.com/400/200/",
+    url: gallery.sample['url'],
     lat: (rand * 170) - 85,
     lng: (rand * 360) - 180
   )
+end
+
+1000.times do
+  user1 = (rand(usernumber) + 1);
+  user2 = (rand(usernumber) + 1);
+  until(user1 != user2) do
+    user1 = (rand(usernumber) + 1);
+    user2 = (rand(usernumber) + 1);
+  end
+  Relationship.create({follower_id: user1, followed_id: user2})
 end

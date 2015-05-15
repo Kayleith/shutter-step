@@ -35,14 +35,22 @@ class UsersController < ApplicationController
 
   def following
     @user  = User.find(params[:id])
-    @users = @user.following.page(params[:page])
-    render json: @users
+    @users = @user.following
+
+    @following_total = @users.count
+    @users = @users.page(params[:page]).per(9)
+
+    render :search
   end
 
   def followers
     @user  = User.find(params[:id])
-    @users = @user.followers.page(params[:page])
-    render json: @users
+    @users = @user.followers
+
+    @following_total = @users.count
+    @users = @user.page(params[:page]).per(9)
+
+    render :search
   end
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json

@@ -1,4 +1,4 @@
-ShutterStep.Collections.Users = Backbone.Model.extend({
-  url: "/users/search",
+ShutterStep.Collections.Users = Backbone.Collection.extend({
+  url: "/users",
   model: ShutterStep.Models.User
 })
