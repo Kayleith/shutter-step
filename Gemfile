@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'byebug'
 gem 'backbone-on-rails'
 gem 'bcrypt'
 gem 'coffee-rails', '~> 4.0.0'

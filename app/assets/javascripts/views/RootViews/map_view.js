@@ -10,7 +10,7 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
   initMap: function(event) {
     this.setElement(".root-map");
     var mapOptions = {
-          center: { lat: 40.72506754286412, lng: -73.99687752127647},
+          center: { lat: 0, lng: 0},
           zoom: 2,
           disableDefaultUI: true,
           minZoom: 2
@@ -21,9 +21,6 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
        "stylers": [{ "visibility": "off" }]
       }];
     this._map.setOptions({styles: styles});
-
-
-    this._mc = new MarkerClusterer(this._map);
 
     this._infoWindow;
     this._submitWindow;
@@ -58,9 +55,9 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
     });
 
     google.maps.event.addListener(marker, 'click', function (event) {
+      view.zoom(23);
       view.showMarkerInfo(event, marker);
     });
-    this._mc.addMarker(marker);
     this._markers[picture.id] = marker;
   },
 
@@ -76,7 +73,16 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
   },
 
   events: {
-    "submit": "createPicture"
+    "submit": "createPicture",
+    "click #picture-map": "reset"
+  },
+  resetMap: function(event) {
+    this._map.setOptions({center: { lat: 0, lng: 0}, zoom: 2});
+  },
+  reset: function(event) {
+    var marker = this._markers[$(event.currentTarget).find("article")[0].id];
+    this.zoom(23);
+    this.showMarkerInfo(event, marker);
   },
 
   createPicture: function(event) {
@@ -119,7 +125,6 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
     var marker = this._markers[picture.id];
     marker.setMap(null);
     google.maps.event.clearInstanceListeners(marker);
-    this._mc.removeMarker(marker);
     delete this._markers[picture.id];
   },
 
@@ -132,6 +137,7 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
         this._infoWindow = new google.maps.InfoWindow({
           content: JST['infoWindow']({picture: picture, user: user})
         });
+        this._map.panTo(marker.position);
         this._infoWindow.open(this._map, marker);
       }.bind(this)
     });

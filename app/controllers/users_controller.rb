@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :require_signed_out!, only: [:new]
-  before_action :require_signed_in!, only: [:edit, :update, :destroy,
-                                        :following, :followers]
+  before_action :set_user, :except => [:index, :new, :create, :search, :following, :followers]
 
   def new
     @user = User.new
+  end
+
+  def index
+    @users = User.all
+    render :index
   end
 
   def create
@@ -14,10 +16,9 @@ class UsersController < ApplicationController
 
     if @user.save
       sign_in!(@user)
-      redirect_to root_url
+      render :show
     else
-      flash.now[:errors] = @user.errors.full_messages
-      render :new
+      render json: @user.errors.full_messages, status: :unprocessable_entity
     end
   end
 

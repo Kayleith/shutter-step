@@ -6,7 +6,10 @@
 <%= user.escape("sex") %><br>
 </label>
 <br>
-
+<br>
+<button data-user-id="<%= user.id %>">Follow</button>
+<br>
+<br>
 <label>
 Followers: <%= user.followers().models.length %><br>
 <% user.followers().each(function(follower) { %>

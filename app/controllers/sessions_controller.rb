@@ -1,29 +1,29 @@
 class SessionsController < ApplicationController
-  before_action :require_signed_out!, only: [:new, :create]
-  before_action :require_signed_in!, only: [:destroy]
 
-  def new
-    @user = User.new()
-    render :new
+  def show
+    if current_user
+      render :show
+    else
+      render json: {}
+    end
   end
 
   def create
     @user = User.find_by_credentials(
-      params[:name],
-      params[:password]
+      params[:user][:name],
+      params[:user][:password]
     )
 
     if @user
       sign_in!(@user)
-      redirect_to root_url
+      render :show
     else
-      flash.now[:errors] = ["Invalid email or password."]
-      render :new
+      head :unprocessable_entity
     end
   end
 
   def destroy
     sign_out
-    redirect_to main_url
+    render json: {}
   end
 end

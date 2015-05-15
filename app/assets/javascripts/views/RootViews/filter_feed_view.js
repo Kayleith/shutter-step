@@ -55,11 +55,13 @@ ShutterStep.Views.FilterFeedView = Backbone.CompositeView.extend({
 
   showPicture: function(event) {
     var id = $(event.currentTarget).find("a").data("id")
+    this._mapView.zoom(2);
     this._mapView.showPicture(event, id);
   },
 
   changePage: function(event) {
     var text = $(event.currentTarget).text();
+    this._mapView.resetMap();
     this.$el.scrollTop(0);
     if(text === "<") {
       this._page = this._page - 1;
