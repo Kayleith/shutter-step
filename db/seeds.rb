@@ -5,6 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'json'
+require 'open-uri'
 
 bot1 = User.create({first_name: "wiki",
                      last_name: "bot",
@@ -25,22 +27,6 @@ bot1 = User.create({first_name: "wiki",
      sex: rand(2) == 1 ? "Male" : "Female"})
 end
 usernumber = User.all.count
-
-require 'json'
-require 'open-uri'
-
-gallery = JSON.parse(open('http://imgur.com/gallery.json').read)['gallery']
-
-# construct URLs
-gallery.each {|i| i['url'] = "http://imgur.com/#{i['hash']}#{i['ext']}" }
-
-# select images that aren't too big
-gallery.select {|i| i['size'] < 200_000 }
-# or images that aren't too small
-gallery.select {|i| i['width'] > 400 && i['height'] > 400 }
-
-# select only PNG images
-gallery.select {|i| i['ext'] == '.png'}
 
 3000.times do
   Picture.create(
