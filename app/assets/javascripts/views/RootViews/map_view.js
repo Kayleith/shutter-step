@@ -1,20 +1,22 @@
 ShutterStep.Views.MapView = Backbone.CompositeView.extend({
+  attributes: {
+    id: "map-canvas"
+  },
+
   initialize: function(options) {
     this._markers = {};
     this.listenTo(this.collection, 'add', this.addMarker);
     this.listenTo(this.collection, 'remove', this.removeMarker);
-    google.maps.event.addDomListener(window, 'load', this.initMap.bind(this));
-    this.parent = options.parent;
   },
 
   initMap: function(event) {
-    this.setElement(".root-map");
     var mapOptions = {
           center: { lat: 0, lng: 0},
           zoom: 2,
           disableDefaultUI: true,
           minZoom: 2
         };
+
     this._map = new google.maps.Map(this.el,mapOptions);
     var styles = [{
        "featureType": "poi",
@@ -25,7 +27,6 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
     this._infoWindow;
     this._submitWindow;
 
-    this.parent.updateData();
     this.attachMapListeners();
   },
 

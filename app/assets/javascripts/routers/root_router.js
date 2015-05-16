@@ -1,11 +1,13 @@
 ShutterStep.Routers.RootRouter = Backbone.Router.extend({
   initialize: function(options){
     this.$rootEl = options.$rootEl;
+    this.collection = ShutterStep.users;
+    this.collection.fetch();
   },
 
   routes: {
-    "": "root",
-    "login": "signIn",
+    "": "signIn",
+    "home": "root",
     "users/:id": "userProfile"
   },
 
@@ -16,8 +18,12 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
   signIn: function(callback){
     if (!this._requireSignedOut(callback)) { return; }
 
+    var model = new ShutterStep.Models.User();
+
     var signInView = new ShutterStep.Views.SignIn({
-      callback: callback
+      callback: callback,
+      collection: this.collection,
+      model: model
     });
     this._swapView(signInView);
   },
@@ -27,6 +33,7 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
     if (!this._requireSignedIn(callback)) { return; }
 
     this._headerView = new ShutterStep.Views.HeaderView({collection: ShutterStep.searchusers});
+    
     var rootView = new ShutterStep.Views.RootView({collection: ShutterStep.pictures });
     this._swapView(rootView);
   },
@@ -36,7 +43,8 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
     if (!this._requireSignedIn(callback)) { return; }
 
     this._headerView = new ShutterStep.Views.HeaderView({collection: ShutterStep.searchusers});
-    var user = new ShutterStep.Models.User({id: id});
+
+    var user = this.collection.getOrFetch(id);
     user.fetch({
       success: function() {
         var userView = new ShutterStep.Views.UserView({model: user});
@@ -47,7 +55,7 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
 
   _requireSignedIn: function(callback){
     if (!ShutterStep.currentUser.isSignedIn()) {
-      callback = callback || this._goHome.bind(this);
+      callback = callback || this._goLogin.bind(this);
       this.signIn(callback);
       return false;
     }
@@ -66,6 +74,10 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
   },
 
   _goHome: function() {
+    Backbone.history.navigate("home", { trigger: true });
+  },
+
+  _goLogin: function() {
     Backbone.history.navigate("", { trigger: true });
   },
 

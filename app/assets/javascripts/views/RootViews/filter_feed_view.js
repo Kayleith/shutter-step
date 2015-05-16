@@ -3,7 +3,6 @@ ShutterStep.Views.FilterFeedView = Backbone.CompositeView.extend({
 
   initialize: function() {
    this._page = 1;
-   this._mapView = new ShutterStep.Views.MapView({collection: this.collection, parent: this});
    this.listenTo(this.collection, 'sync', this.addPictures);
    this.listenTo(this.collection, 'remove', this.removePicture);
   },
@@ -61,7 +60,7 @@ ShutterStep.Views.FilterFeedView = Backbone.CompositeView.extend({
 
   changePage: function(event) {
     var text = $(event.currentTarget).text();
-    this._mapView.resetMap();
+    // this._mapView.resetMap();
     this.$el.scrollTop(0);
     if(text === "<") {
       this._page = this._page - 1;
