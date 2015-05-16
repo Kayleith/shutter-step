@@ -7,6 +7,18 @@ ShutterStep.Views.FilterFeedView = Backbone.CompositeView.extend({
    this.listenTo(this.collection, 'remove', this.removePicture);
   },
 
+  leftPage: function() {
+    this._page = this._page - 1;
+  },
+
+  rightPage: function() {
+    this._page = this._page + 1;
+  },
+
+  setPage: function(page) {
+    this._page = page;
+  },
+
   updateData: function() {
     this.collection.fetch({
       data: { page: this._page },
@@ -33,44 +45,5 @@ ShutterStep.Views.FilterFeedView = Backbone.CompositeView.extend({
 
   removePicture: function (picture) {
     this.removeModelSubview('.root-filter-feed-item', picture);
-  },
-
-  events: {
-    "mouseover li.picture-feed": "bouncePicture",
-    "mouseout li.picture-feed": "stopBouncePicture",
-    "click li.picture-feed": "showPicture",
-    "click button": "changePage"
-  },
-
-  bouncePicture: function(event) {
-    var id = $(event.currentTarget).find("a").data("id")
-    this._mapView.startBounce(id);
-  },
-
-  stopBouncePicture: function(event) {
-    var id = $(event.currentTarget).find("a").data("id")
-    this._mapView.stopBounce(id);
-  },
-
-  showPicture: function(event) {
-    var id = $(event.currentTarget).find("a").data("id")
-    this._mapView.zoom(2);
-    this._mapView.showPicture(event, id);
-  },
-
-  changePage: function(event) {
-    var text = $(event.currentTarget).text();
-    // this._mapView.resetMap();
-    this.$el.scrollTop(0);
-    if(text === "<") {
-      this._page = this._page - 1;
-      this.updateData();
-    } else if(text === ">") {
-      this._page = this._page + 1;
-      this.updateData();
-    } else {
-      this._page = parseInt(text);
-      this.updateData();
-    }
   }
 });

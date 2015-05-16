@@ -1,6 +1,9 @@
 ShutterStep.Routers.RootRouter = Backbone.Router.extend({
-  initialize: function(options){
+
+  initialize: function(options) {
+
     this.$rootEl = options.$rootEl;
+
     this.collection = ShutterStep.users;
     this.collection.fetch();
   },
@@ -11,14 +14,10 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
     "users/:id": "userProfile"
   },
 
-  initialize: function(options) {
-    this.$rootEl = options.$rootEl;
-  },
-
   signIn: function(callback){
     if (!this._requireSignedOut(callback)) { return; }
 
-    var model = new ShutterStep.Models.User();
+    var model = this.collection.model();
 
     var signInView = new ShutterStep.Views.SignIn({
       callback: callback,
@@ -30,25 +29,34 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
 
   root: function() {
     var callback = this.root.bind(this);
-    if (!this._requireSignedIn(callback)) { return; }
+    ShutterStep.currentUser.fetch({
+      success: function () {
+        if (!this._requireSignedIn(callback)) { return; }
 
-    this._headerView = new ShutterStep.Views.HeaderView({collection: ShutterStep.searchusers});
-    
-    var rootView = new ShutterStep.Views.RootView({collection: ShutterStep.pictures });
-    this._swapView(rootView);
+        this._headerView = new ShutterStep.Views.HeaderView({collection: ShutterStep.searchusers});
+        var pictures = new ShutterStep.Collections.Pictures();
+        var rootView = new ShutterStep.Views.RootView({collection: pictures});
+        this._swapView(rootView);
+      }.bind(this)
+    });
+
   },
 
   userProfile: function(id) {
     var callback = this.userProfile.bind(this, id);
-    if (!this._requireSignedIn(callback)) { return; }
+    ShutterStep.currentUser.fetch({
+      success: function () {
+        if (!this._requireSignedIn(callback)) { return; }
 
-    this._headerView = new ShutterStep.Views.HeaderView({collection: ShutterStep.searchusers});
+        this._headerView = new ShutterStep.Views.HeaderView({collection: ShutterStep.searchusers});
 
-    var user = this.collection.getOrFetch(id);
-    user.fetch({
-      success: function() {
-        var userView = new ShutterStep.Views.UserView({model: user});
-        this._swapView(userView);
+        var user = this.collection.getOrFetch(id);
+        user.fetch({
+          success: function() {
+            var userView = new ShutterStep.Views.UserView({model: user});
+            this._swapView(userView);
+          }.bind(this)
+        });
       }.bind(this)
     });
   },

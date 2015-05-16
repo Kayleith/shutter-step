@@ -7,9 +7,8 @@ window.ShutterStep = {
     this.currentUser = new ShutterStep.Models.CurrentUser();
     this.currentUser.fetch();
 
-    ShutterStep.searchusers = new ShutterStep.Collections.UsersSearch();
-    ShutterStep.users = new ShutterStep.Collections.Users();
-    ShutterStep.pictures = new ShutterStep.Collections.Pictures();
+    this.searchusers = new ShutterStep.Collections.UsersSearch();
+    this.users = new ShutterStep.Collections.Users();
 
     new ShutterStep.Routers.RootRouter({$rootEl: $(".currentView")});
     Backbone.history.start();

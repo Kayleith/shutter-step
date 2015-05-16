@@ -77,9 +77,11 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
     "submit": "createPicture",
     "click #picture-map": "reset"
   },
+
   resetMap: function(event) {
     this._map.setOptions({center: { lat: 0, lng: 0}, zoom: 2});
   },
+
   reset: function(event) {
     var marker = this._markers[$(event.currentTarget).find("article")[0].id];
     this.zoom(23);
