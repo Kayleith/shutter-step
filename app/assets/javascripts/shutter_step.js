@@ -10,7 +10,7 @@ window.ShutterStep = {
     this.searchusers = new ShutterStep.Collections.UsersSearch();
     this.users = new ShutterStep.Collections.Users();
 
-    new ShutterStep.Routers.RootRouter({$rootEl: $(".currentView")});
+    this.router = new ShutterStep.Routers.RootRouter({$rootEl: $(".currentView")});
     Backbone.history.start();
   }
 };

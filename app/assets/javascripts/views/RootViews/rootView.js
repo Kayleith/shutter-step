@@ -1,7 +1,5 @@
 ShutterStep.Views.RootView = Backbone.View.extend({
   template: JST['rootView'],
-  tagName: "section",
-  className: "root-content group",
 
   initialize: function() {
     this._filterFeedView = new ShutterStep.Views.FilterFeedView({collection: this.collection});
@@ -11,6 +9,7 @@ ShutterStep.Views.RootView = Backbone.View.extend({
   render: function() {
     var content = this.template();
     this.$el.html(content);
+
     this.$(".root-filter-feed").html(this._filterFeedView.$el);
     this.$(".root-map").html(this._mapView.$el);
 

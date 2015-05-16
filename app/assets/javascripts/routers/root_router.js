@@ -34,6 +34,7 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
         if (!this._requireSignedIn(callback)) { return; }
 
         this._headerView = new ShutterStep.Views.HeaderView({collection: ShutterStep.searchusers});
+
         var pictures = new ShutterStep.Collections.Pictures();
         var rootView = new ShutterStep.Views.RootView({collection: pictures});
         this._swapView(rootView);
@@ -93,5 +94,9 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
     this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$rootEl.html(view.render().$el);
+  },
+
+  setCurrentView: function(view) {
+    this._currentView = view;
   }
 });
