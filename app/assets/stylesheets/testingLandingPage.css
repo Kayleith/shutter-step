@@ -1,0 +1,179 @@
+.landing-page-logo {
+  display: block;
+  background: white;
+  position: absolute;
+  left: 20%;
+  top: 0px;
+  width: 100px;
+  padding: 10px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.landing-page {
+  background: transparent;
+  position: relative;
+}
+
+.landing-page-ul {
+  display: block;
+  width: 700px;
+  color: white;
+  position: absolute;
+  right: 10%;
+  top: 0px;
+  font-size: 12px;
+  margin-right: 11px;
+}
+
+.landing-page-text {
+  float: left;
+  margin-top: 40px;
+  padding: 0 13px;
+}
+
+.landing-page-ul li{
+  float: left;
+  margin-top: 15px;
+}
+
+.landing-page-form {
+  padding-left: 10px;
+  margin-top: 5px;
+  background: white;
+  color: black;
+  border: 1px solid black;
+  height: 21px;
+  width: 148px;
+}
+
+.landing-page-btn {
+  border: 1px solid #19356E;
+  font-size: 12px;
+  padding: 2px 6px 4px 5px;
+  font-weight: 700;
+  background: #09afd7;;
+  margin-top: 19px;
+  margin-left: 2px;
+  margin-right: 9px;
+}
+
+.landing-page-background {
+  display: block;
+  position: absolute;
+  width: 100%;
+  z-index: -1000;
+}
+
+.landing-page-sign-in-message {
+  float: left;
+  width: 565px;
+  height: 400px;
+  margin-right: 10px;
+}
+
+.landing-page-sign-up-form {
+  display: block;
+  position: absolute;
+  right: 21%;
+  top: 25%;
+  color: rgba(255, 255, 255, .5);
+  background: rgba(0, 0, 0, .5);
+  padding: 10px;
+}
+
+.landing-page-sign-up-form h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.landing-page-sign-up-form h2 {
+  font-size: 19px;
+  margin-bottom: 25px;
+}
+
+.landing-page-sign-up-form input.fields {
+  color: white;
+  background: black;
+  padding-left: 10px;
+  border-right: 1px solid #09afd7;
+  border-top: 1px solid #09afd7;
+  border-bottom: 1px solid #09afd7;
+  border-left: 5px solid #f68a50;
+  border-radius: 5px;
+  width: 387px;
+  height: 39px;
+  margin-bottom: 10px;
+}
+
+.landing-page-sign-up-form input.name1 {
+  color: white;
+  background: black;
+  padding-left: 10px;
+  border-right: 1px solid #09afd7;
+  border-top: 1px solid #09afd7;
+  border-bottom: 1px solid #09afd7;
+  border-left: 5px solid #f68a50;
+  border-radius: 5px;
+  width: 182px;
+  height: 39px;
+  margin-bottom: 10px;
+  margin-right: 8px;
+}
+
+.landing-page-sign-up-form input.name2 {
+  color: white;
+  background: black;
+  padding-left: 10px;
+  border-right: 1px solid #09afd7;
+  border-top: 1px solid #09afd7;
+  border-bottom: 1px solid #09afd7;
+  border-left: 5px solid #f68a50;
+  border-radius: 5px;
+  width: 182px;
+  height: 39px;
+  margin-bottom: 10px;
+}
+
+.landing-page-sing-up-form label {
+  font-size: 18px;
+}
+
+.dob {
+  width: 300px;
+  height: 41px;
+}
+
+.landing-page-sign-up-form select {
+  margin-top: 5px;
+  float: left;
+  background: transparent;
+  height: 32px;
+  font-size: 12px;
+  border: 1px solid #bdc7d8;
+}
+
+.sex-buttons {
+  height: 20px;
+}
+
+.sex-button {
+  float: left;
+  margin: 0px 10px;
+  font-size: 12px;
+}
+
+.landing-page-sign-up-form button {
+  display: block;
+  margin: auto;
+  border-radius: 5px;
+  background: rgba(246, 138, 80, 1);
+  text-shadow: 0 1px 2px rgba(9,175,215,1);
+  color: rgba(255,255,255,.5);
+  font-size: 12px;
+  padding: 7px 73px;
+  margin-bottom: 20px;
+}
