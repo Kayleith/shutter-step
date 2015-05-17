@@ -14,11 +14,7 @@
 
       </li>
       <li>
-        <form action="/session" method="post">
-          <input type="hidden" name="authenticity_token" value="<%= $('meta[name=csrf-token]').attr('content') %>">
-          <input type="hidden" name="_method" value="DELETE">
-          <button>Sign Out</button>
-        </form>
+        <button class="sign-out">Sign Out</button>
       </li>
     </ul>
   </section>

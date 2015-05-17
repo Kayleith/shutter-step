@@ -30,29 +30,29 @@
 .animation-slideup-start {
   display:block;
 	-webkit-transform: translate3d(0, 0, 0);
-  animation: slideup-start 1s;
-  -webkit-animation: slideup-start 1s;
+  animation: slideup-start 500ms;
+  -webkit-animation: slideup-start 500ms;
 }
 
 .animation-slidedown-start {
   display:block;
 	-webkit-transform: translate3d(0, 0, 0);
-  animation: slidedown-start 1s;
-  -webkit-animation: slidedown-start 1s;
+  animation: slidedown-start 500ms;
+  -webkit-animation: slidedown-start 500ms;
 }
 
 .animation-slidedown {
   display:block;
 	-webkit-transform: translate3d(0, 0, 0);
-  animation: slidedown 1s;
-  -webkit-animation: slidedown 1s;
+  animation: slidedown 500ms;
+  -webkit-animation: slidedown 500ms;
 }
 
 .animation-slideup {
   display:block;
 	-webkit-transform: translate3d(0, 0, 0);
-  animation: slideup 1s;
-  -webkit-animation: slideup 1s;
+  animation: slideup 500ms;
+  -webkit-animation: slideup 500ms;
 }
 
 /*animations*/

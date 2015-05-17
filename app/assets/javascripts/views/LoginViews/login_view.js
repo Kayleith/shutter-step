@@ -29,8 +29,8 @@ ShutterStep.Views.SignIn = Backbone.View.extend({
       success: function(){
         ShutterStep.currentUser.fetch();
         that.collection.add(that.model, { merge: true });
-        Backbone.history.navigate("home", { trigger: true });
-      },
+        this.cameraTransition();
+      }.bind(this),
       error: function(data){
         alert("Form invalid. Let the user know what went wrong.");
         console.log(data);
@@ -54,6 +54,7 @@ ShutterStep.Views.SignIn = Backbone.View.extend({
   },
 
   cameraTransition: function() {
+
     $(".top-block").addClass("off-stage-top");
     $(".bottom-block").addClass("off-stage-bottom");
 

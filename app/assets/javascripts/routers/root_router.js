@@ -17,7 +17,7 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
   signIn: function(callback){
     if (!this._requireSignedOut(callback)) { return; }
 
-    var model = this.collection.model();
+    var model = new ShutterStep.Models.User();
 
     var signInView = new ShutterStep.Views.SignIn({
       callback: callback,
@@ -32,8 +32,6 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
     ShutterStep.currentUser.fetch({
       success: function () {
         if (!this._requireSignedIn(callback)) { return; }
-
-        this._headerView = new ShutterStep.Views.HeaderView({collection: ShutterStep.searchusers});
 
         var pictures = new ShutterStep.Collections.Pictures();
         var rootView = new ShutterStep.Views.RootView({collection: pictures});
@@ -64,7 +62,7 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
 
   _requireSignedIn: function(callback){
     if (!ShutterStep.currentUser.isSignedIn()) {
-      callback = callback || this._goLogin.bind(this);
+      callback = callback || this._goHome.bind(this);
       this.signIn(callback);
       return false;
     }
