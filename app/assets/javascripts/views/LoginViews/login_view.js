@@ -12,16 +12,20 @@ ShutterStep.Views.SignIn = Backbone.View.extend({
   },
 
   header: function() {
-    if($(window).scrollTop() > 0) {
+    if($(window).scrollTop() > 2) {
+      this.$(".landing-page-logo").removeClass("add-border");
       this.$(".landing-page-logo").addClass("remove-border");
       this.$(".landing-page").addClass("landing-page-fixed animationbackground");
-      this.$(".landing-page").removeClass("landing-page");
-      this.$("label").addClass("animationcolor");
+      this.$(".landing-page").removeClass("landing-page animationbackground-r");
+      this.$(".landing-page-ul label").removeClass("animationcolor-r");
+      this.$(".landing-page-ul label").addClass("animationcolor");
     } else if($(window).scrollTop() === 0) {
       this.$(".landing-page-logo").removeClass("remove-border");
-      this.$(".landing-page-fixed").addClass("landing-page");
+      this.$(".landing-page-logo").addClass("add-border");
+      this.$(".landing-page-fixed").addClass("landing-page animationbackground-r");
       this.$(".landing-page-fixed").removeClass("landing-page-fixed animationbackground");
-      this.$("label").removeClass("animationcolor");
+      this.$(".landing-page-ul label").removeClass("animationcolor");
+      this.$(".landing-page-ul label").addClass("animationcolor-r");
     }
   },
 
