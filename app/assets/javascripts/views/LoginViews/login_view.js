@@ -2,12 +2,21 @@ ShutterStep.Views.SignIn = Backbone.View.extend({
 
   initialize: function(options){
     this.callback = options.callback;
+    $(window).on("scroll", this.header.bind(this));
     // this.listenTo(ShutterStep.currentUser, "signIn", this.signInCallback);
   },
 
   events: {
     "submit .sign-in-part-form": "signIn",
     "submit .sign-up-part-form": "signUp"
+  },
+
+  header: function() {
+    if($(window).scrollTop() > 0) {
+      this.$(".landing-page-logo").addClass("remove-border");
+      this.$(".landing-page").addClass("landing-page-fixed");
+      this.$(".landing-page").removeClass("landing-page");
+    }
   },
 
   template: JST["loginWindow"],

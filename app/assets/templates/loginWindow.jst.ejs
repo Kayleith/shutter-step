@@ -1,152 +1,137 @@
-<section class="sign-in-page">
-  <header class="sign-in">
-    <nav class="sign-in-nav group">
-      <h1 class="sign-in-nav-logo">
-        <a href=#>
-          shutterstep
-        </a>
-      </h1>
-      <ul class="sign-in-ul group">
+<section class="landingPage">
+  <img class="landing-page-background" src="<%= ShutterStep.landingPage %>" />
+  <header class="landing-page">
+    <nav class="landing-page-nav">
+
+      <img class="landing-page-logo" src="<%= ShutterStep.dropper %>" />
+
+      <ul class="landing-page-ul group">
+
+        <label class="landing-page-text">
+          Home
+        </label>
+
+        <label class="landing-page-text">
+          Feature
+        </label>
+
+        <label class="landing-page-text">
+          Our Team
+        </label>
+
         <form class="sign-in-part-form">
-          <li class="sign-in-text">
+          <li>
             <label>Email or Username</label>
             <br>
-              <input class="sign-in-form" name="user[name]" type="text">
-            <br>
-          </li>
-          <li class="sign-in-text">
-            <label>Password</label>
-            <br>
-              <input class="sign-in-form" name="user[password]" type="password"><br>
+              <input class="landing-page-form" name="user[name]" type="text">
             <br>
           </li>
           <li>
-            <input type="submit" value="Log In" class="sign-in-btn"><br>
+            <label>Password</label>
+            <br>
+              <input class="landing-page-form" name="user[password]" type="password"><br>
+            <br>
+          </li>
+          <li>
+            <input type="submit" value="Log In" class="landing-page-btn"><br>
           </li>
         </form>
       </ul>
     </nav>
   </header>
-  <section class="sign-in-background">
-    <section class="sign-in-content group">
-      <article class="sign-in-message">
 
-      </article>
-      <article class="sign-up-form">
-        <h1>Sign Up</h1>
-        <h2>A picture is worth a thousand words.</h2>
-        <form class="sign-up-part-form">
-          <input class="name1" name="user[first_name]" type="text" placeholder="First Name">
-          <input class="name2" name="user[last_name]" type="text" placeholder="Last Name">
-          <br>
-          <input class="fields" name="user[username]" type="text" placeholder="Username">
-          <br>
-          <input class="fields" name="user[email]" type="text" placeholder="Email">
-          <br>
-          <input class="fields" name="user[password]" type="password" placeholder="New Password">
-          <br>
-          <label>Birthday</label>
-          <br>
-          <section class="dob">
-            <select name="DOBMonth">
-              <option>Month</option>
-              <option value="1">Jan</option>
-              <option value="2">Feb</option>
-              <option value="3">Mar</option>
-              <option value="4">Apr</option>
-              <option value="5">May</option>
-              <option value="6">Jun</option>
-              <option value="7">Jul</option>
-              <option value="8">Aug</option>
-              <option value="9">Sep</option>
-              <option value="10">Oct</option>
-              <option value="11">Nov</option>
-              <option value="12">Dec</option>
-            </select>
+  <section class="landing-page-sign-in-content">
+    <article class="landing-page-sign-in-message">
+      <img class="landing-page-message" src="<%= ShutterStep.logo %>" />
+      <h1>EXPLORING PHOTOGRAPHY</h1>
+      <h2>THROUGH A DROP OF A PIN</h2>
+    </article>
+    <article class="landing-page-sign-up-form">
+      <h1>Sign Up</h1>
+      <h2>A picture is worth a thousand words.</h2>
+      <form class="landing-page-sign-up-part-form">
+        <input class="name1" name="user[first_name]" type="text" placeholder="First Name">
+        <input class="name2" name="user[last_name]" type="text" placeholder="Last Name">
+        <br>
+        <input class="fields" name="user[username]" type="text" placeholder="Username">
+        <br>
+        <input class="fields" name="user[email]" type="text" placeholder="Email">
+        <br>
+        <input class="fields" name="user[password]" type="password" placeholder="New Password">
+        <br>
+        <label>Birthday</label>
+        <br>
+        <section class="dob">
+          <select name="DOBMonth">
+            <option>Month</option>
+            <option value="1">Jan</option>
+            <option value="2">Feb</option>
+            <option value="3">Mar</option>
+            <option value="4">Apr</option>
+            <option value="5">May</option>
+            <option value="6">Jun</option>
+            <option value="7">Jul</option>
+            <option value="8">Aug</option>
+            <option value="9">Sep</option>
+            <option value="10">Oct</option>
+            <option value="11">Nov</option>
+            <option value="12">Dec</option>
+          </select>
 
-            <select name="DOBDay">
-              <option>Day</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="16">16</option>
-              <option value="17">17</option>
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="21">21</option>
-              <option value="22">22</option>
-              <option value="23">23</option>
-              <option value="24">24</option>
-              <option value="25">25</option>
-              <option value="26">26</option>
-              <option value="27">27</option>
-              <option value="28">28</option>
-              <option value="29">29</option>
-              <option value="30">30</option>
-              <option value="31">31</option>
-            </select>
+          <select name="DOBDay">
+            <option>Day</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+            <option value="31">31</option>
+          </select>
 
-            <select name="DOBYear">
-              <option>Year</option>
-              <% for(var i = 0; i <= 100; i++) { %>
-                <option value="<%= 2015 - i %>"><%= 2015 - i %></option>
-              <% } %>
-            </select>
+          <select name="DOBYear">
+            <option>Year</option>
+            <% for(var i = 0; i <= 100; i++) { %>
+              <option value="<%= 2015 - i %>"><%= 2015 - i %></option>
+            <% } %>
+          </select>
+        </section>
+        <br>
+        <section class="sex-buttons">
+          <section class="sex-button">
+            <input type="radio" name="user[sex]" value="Female" checked> &nbsp;Female
           </section>
-          <br>
-          <section class="sex-buttons">
-            <section class="sex-button">
-              <input type="radio" name="user[sex]" value="Female" checked> &nbsp;Female
-            </section>
-            <section class="sex-button">
-              <input type="radio" name="user[sex]" value="Male" checked> &nbsp;Male
-            </section>
+          <section class="sex-button">
+            <input type="radio" name="user[sex]" value="Male" checked> &nbsp;Male
           </section>
-          <br>
-          <button>Sign Up</button>
-        </form>
-      </article>
-    </section>
+        </section>
+        <br>
+        <button>Sign Up</button>
+      </form>
+    </article>
   </section>
-
-  <footer class="foot group">
-    <h2 class="foot-copyright">
-      Shutter Step © 2015. All rights reserved.
-    </h2>
-    <ul class="foot-links">
-      <li>
-        <a href="#">
-          Home
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          About
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          Terms
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          Privacy
-        </a>
-      </li>
-    </ul>
-  </footer>
 </section>

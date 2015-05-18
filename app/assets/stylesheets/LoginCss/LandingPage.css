@@ -1,10 +1,35 @@
+.landingPage {
+  background: transparent;
+  position: relative;
+  width: 100%;
+  min-width: 1600px;
+}
+
+.landing-page {
+  display: block;
+  height: 100px;
+}
+
+.landing-page-fixed {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  background: white;
+  z-index: 100000000;
+  border-bottom: 1px solid black;
+  opacity: 1;
+  transition: opacity 1s linear;
+}
+
 .landing-page-logo {
   display: block;
-  background: white;
   position: absolute;
+  background: white;
   left: 20%;
   top: 0px;
-  width: 100px;
+  width: auto;
+  height: 80px;
   padding: 10px;
   border-left: 1px solid black;
   border-right: 1px solid black;
@@ -12,16 +37,16 @@
   border-bottom-right-radius: 5px;
 }
 
-.landing-page {
-  background: transparent;
-  position: relative;
+.remove-border {
+  border: 0;
+  border-radius: 0;
 }
 
 .landing-page-ul {
   display: block;
   width: 700px;
-  color: white;
   position: absolute;
+  color: white;
   right: 10%;
   top: 0px;
   font-size: 12px;
@@ -67,18 +92,36 @@
   z-index: -1000;
 }
 
-.landing-page-sign-in-message {
-  float: left;
-  width: 565px;
+.landing-page-sign-in-content {
+  display: block;
+  position: relative;
   height: 400px;
-  margin-right: 10px;
+}
+.landing-page-message {
+  width: 500px;
+}
+.landing-page-sign-in-message {
+  opacity: .75;
+  display: block;
+  position: absolute;
+  top: 64%;
+  left: 21%;
+  text-align: center;
+  color: rgba(255, 255, 255, .5);å
+}
+.landing-page-sign-in-message h1 {
+  font-size: 24px;
+  padding: 10px;
+}
+.landing-page-sign-in-message h2 {
+  padding: 10px;
 }
 
 .landing-page-sign-up-form {
   display: block;
   position: absolute;
   right: 21%;
-  top: 25%;
+  top: 64%;
   color: rgba(255, 255, 255, .5);
   background: rgba(0, 0, 0, .5);
   padding: 10px;
