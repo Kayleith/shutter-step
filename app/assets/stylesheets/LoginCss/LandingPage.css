@@ -8,6 +8,7 @@
 .landing-page {
   display: block;
   height: 100px;
+  background: transparent;
 }
 
 .landing-page-fixed {
@@ -15,12 +16,26 @@
   position: fixed;
   width: 100%;
   height: 100px;
-  background: white;
   z-index: 100000000;
+  background: white;
   border-bottom: 1px solid black;
-  opacity: 1;
-  transition: opacity 1s linear;
 }
+
+.animationbackground {
+  -webkit-animation: fadeinbackground 1s;
+  animation: fadeinbackground 1s;
+}
+
+@keyframes fadeinbackground {
+  from { background: transparent; }
+  to { background: white; }
+}
+
+@-webkit-keyframes fadeinbackground {
+  from { background: transparent; }
+  to { background: white; }
+}
+
 
 .landing-page-logo {
   display: block;
@@ -51,6 +66,22 @@
   top: 0px;
   font-size: 12px;
   margin-right: 11px;
+}
+
+.animationcolor {
+  color: black;
+  -webkit-animation: fadeincolor 1s;
+  animation: fadeincolor 1s;
+}
+
+@keyframes fadeincolor {
+  from { color: white; }
+  to { color: black; }
+}
+
+@-webkit-keyframes fadeincolor {
+  from { color: white; }
+  to { color: black; }
 }
 
 .landing-page-text {

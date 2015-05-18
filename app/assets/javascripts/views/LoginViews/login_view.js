@@ -7,15 +7,21 @@ ShutterStep.Views.SignIn = Backbone.View.extend({
   },
 
   events: {
-    "submit .sign-in-part-form": "signIn",
-    "submit .sign-up-part-form": "signUp"
+    "submit .landing-page-sign-in-part-form": "signIn",
+    "submit .landing-page-sign-up-part-form": "signUp"
   },
 
   header: function() {
     if($(window).scrollTop() > 0) {
       this.$(".landing-page-logo").addClass("remove-border");
-      this.$(".landing-page").addClass("landing-page-fixed");
+      this.$(".landing-page").addClass("landing-page-fixed animationbackground");
       this.$(".landing-page").removeClass("landing-page");
+      this.$("label").addClass("animationcolor");
+    } else if($(window).scrollTop() === 0) {
+      this.$(".landing-page-logo").removeClass("remove-border");
+      this.$(".landing-page-fixed").addClass("landing-page");
+      this.$(".landing-page-fixed").removeClass("landing-page-fixed animationbackground");
+      this.$("label").removeClass("animationcolor");
     }
   },
 
