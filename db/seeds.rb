@@ -59,12 +59,11 @@ randomURL = ["http://i667.photobucket.com/albums/vv39/marie58_bucket/Funny/48558
   )
 end
 
-3000.times do
-  user1 = (rand(usernumber) + 1);
-  user2 = (rand(usernumber) + 1);
-  until(user1 != user2) do
-    user1 = (rand(usernumber) + 1);
-    user2 = (rand(usernumber) + 1);
+usernumber.times do |i|
+  user1 = i + 1
+  user2 = (user1 + rand(usernumber - user1) + 1)
+  while(user1 < user2) do
+    Relationship.create({follower_id: user1, followed_id: user2})
+    user1 += 1
   end
-  Relationship.create({follower_id: user1, followed_id: user2})
 end

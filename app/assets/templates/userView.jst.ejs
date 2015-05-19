@@ -1,61 +1,17 @@
 <header class="root"></header>
 <main class="profile-content group">
   <section class="profile-content-sidebar">
-    <a href="#" class="profile-picture">
-			<img src="<%= user.escape("medium_image_url")%>" />
-    </a>
-
-    <div class="profile-info">
-		<button data-user-id="<%= user.id %>">Follow</button>
-      <h1><%= user.escape("first_name") %> <%= user.escape("last_name") %></h1>
-			<h2>Username: <%= user.escape("username") %></h2>
-			<h2>Birthday: <%= user.escape("birthday") %></h2>
-			<h2>Sex     : <%= user.escape("sex") %></h2>
-    </div>
-
-    <ul class="profile-nav">
-			<li>
-				<a href="#">Following: <%= user.following().models.length %></a>
-				<ul class="profile-following group">
-					<% user.following().each(function(following) { %>
-						<li>
-							<label class="friend-name">
-								<%= following.escape("username") %>
-							</label>
-							<img src="<%= user.escape("thumb_image_url")%>" />
-						</li>
-					<% }) %>
-				</ul>
-			</li>
-      <li>
-				<a href="#">Followers: <%= user.followers().models.length %></a>
-				<ul class="profile-followers group">
-					<% user.followers().each(function(follower) { %>
-						<%= follower.escape("first_name") %><br>
-						<%= follower.escape("last_name") %><br>
-						<%= follower.escape("username") %><br>
-						<%= follower.escape("birthday") %><br>
-						<%= follower.escape("sex") %><br>
-					<% }) %>
-	      </ul>
-			</li>
-      <li>
-				<a href="#">Favorited Photos</a>
-			</li>
-    </ul>
   </section>
   <section class="profile-content-main">
 
   </section>
+  <section class="profile-uploaded-pictures">
+    Pictures: <%= user.pictures().models.length %><br>
+
+    <% user.pictures().each(function(picture) { %>
+      <div class="thumb-nail">
+    	   <img data-id="<%=picture.id%>" src="<%= picture.escape("url")%>" alt="" />
+      </div>
+    <% }) %>
+  </section>
 </main>
-
-<label class="profile-picture-collection">
-<br>
-Pictures: <%= user.pictures().models.length %><br>
-
-<% user.pictures().each(function(picture) { %>
-	<h1><%=picture.escape("title")%></h1> <br>
-	<img src="<%= picture.escape("url")%>" alt="" /><br>
-	<br><p><%=picture.escape("description")%></p> <br>
-<% }) %>
-</label>

@@ -1,0 +1,8 @@
+#input-user-avatar {
+  background: grey;
+  color: black;
+  position: absolute;
+  top: 15%;
+  left: 35%;
+  z-index: 4;
+}

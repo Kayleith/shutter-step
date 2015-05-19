@@ -1,33 +1,73 @@
-.profile-content {
-  position: absolute;
-	left: 0;
-	top: 150px;
-  background: #fff;
+.modal {
+  display: none;
 }
 
+.modal.open {
+  display: block;
+}
+
+.modal-screen {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.modal img {
+  position: absolute;
+  top: 15%;
+  left: 35%;
+  width: 30%;
+  height: auto;
+  z-index: 3;
+}
+
+.profile-content {
+  display: block;
+  background: #fff;
+  width: 100%;
+}
+.hide-button {
+  display: none;
+}
 
 .profile-content-sidebar {
+  float: left;
 	width: 200px;
 	height: 100%;
 	min-height: 200px;
 	padding: 20px;
+  overflow-y: auto;
+  border-right: 1px solid black;
 }
 
 .profile-picture {
   display: block;
-  margin-top: -120px;
+  position: relative;
   border: 1px solid #000;
   background: #000;
   border-radius: 5px;
-  position: relative;
 	overflow:hidden;
 	width: 200px;
 	height: 200px;
 }
 
+.profile-picture > button {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  border: 1px solid black;
+	padding: 5px;
+  background: grey;
+}
+
 .profile-picture > img{
-	height: 100%;
-	width: auto;
+  display: block;
+	width: 100%;
+	height: auto;
 }
 
 .profile-info {
@@ -39,11 +79,6 @@
   font-size: 24px;
 }
 .profile-info > h2 {
-	padding: 5px;
-}
-.profile-info > button{
-  border: 1px solid black;
-	margin-bottom: 5px;
 	padding: 5px;
 }
 
@@ -59,13 +94,13 @@
   border-top: 1px solid #ccc;
 }
 
-.profile-nav a {
+.profile-nav label.menu-item {
   display: block;
   padding: 5px;
   font-weight: 700;
 }
 
-.profile-nav a:hover {
+.profile-nav label.menu-item:hover {
   background: #eee;
 }
 
@@ -91,4 +126,19 @@
 
 .profile-followers > li:nth-child(3n-1) {
   margin: 0 10px 10px 10px;
+}
+
+.profile-uploaded-pictures {
+  float: right;
+  width: 200px;
+}
+.thumb-nail {
+  float: left;
+  width: 100px;
+  height: 100px;
+  overflow:hidden;
+}
+.profile-uploaded-pictures > img {
+  height: 100%;
+  width: auto;
 }

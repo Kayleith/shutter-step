@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     @users = @user.following
 
     @following_total = @users.count
-    @users = @users.page(params[:page]).per(9)
+    # @users = @users.page(params[:page]).per(9)
 
     render :search
   end
@@ -49,17 +49,21 @@ class UsersController < ApplicationController
     @user  = User.find(params[:id])
     @users = @user.followers
 
-    @following_total = @users.count
-    @users = @user.page(params[:page]).per(9)
+    @followers_total = @users.count
+    # @users = @user.page(params[:page]).per(9)
 
     render :search
   end
 
   def update
-    if @user.update(user_params)
+    if(@user.id == current_user.id)
+      if @user.update(user_params)
         render :show, status: :ok
+      else
+        render json: @user.errors, status: :unprocessable_entity
+      end
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: current_user.errors, status: :unprocessable_entity
     end
   end
   #
@@ -79,6 +83,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :sex, :username, :email, :password, :session_token, :image)
+      params.require(:user).permit(:first_name, :last_name, :sex, :username, :email, :password, :session_token, :avatar)
     end
 end
