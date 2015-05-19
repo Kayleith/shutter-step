@@ -1,8 +1,14 @@
-#input-user-avatar {
-  background: grey;
-  color: black;
+.sendup-avatar-image {
   position: absolute;
   top: 15%;
   left: 35%;
   z-index: 4;
+}
+
+#input-avatar-image {
+}
+
+#input-user-avatar {
+  background: grey;
+  color: black;
 }

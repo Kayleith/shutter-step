@@ -3,21 +3,27 @@ ShutterStep.Views.SidebarView = Backbone.CompositeView.extend({
   initialize: function() {
     this._followers = this.model.followers();
     this._following = this.model.following();
+
+    var followingView = new ShutterStep.Views.FollowingView({collection: this._following});
+    this.addSubview(".profile-nav", followingView);
+    var followersView = new ShutterStep.Views.FollowersView({collection: this._followers});
+    this.addSubview(".profile-nav", followersView);
+
+    this.listenTo(this.model, 'sync', this.render);
+    $(window).on("keydown", this.closeProfile.bind(this));
   },
 
   render: function() {
     var content = this.template({user: this.model});
     this.$el.html(content);
+
     if(this._followers.get(ShutterStep.currentUser.id)) {
       this.$(".profile-picture button").text("Unfollow");
     }
     if(this.model.id === ShutterStep.currentUser.id) {
       this.$(".profile-picture button").addClass("hide-button");
     }
-    var followingView = new ShutterStep.Views.FollowingView({collection: this._following});
-    this.addSubview(this.$(".profile-nav"), followingView);
-    var followersView = new ShutterStep.Views.FollowersView({collection: this._followers});
-    this.addSubview(this.$(".profile-nav"), followersView);
+    this.attachSubviews();
     return this;
   },
 
@@ -25,10 +31,31 @@ ShutterStep.Views.SidebarView = Backbone.CompositeView.extend({
     "click #follow": "follow",
     "click .profile-picture img": "openProfile",
     "submit form.sendup-avatar-image": "submit",
-    "change #input-avatar-image": "fileInputChange"
+    "change #input-avatar-image": "fileInputChange",
+    "click .js-modal-close": "closeProfile2"
   },
+
   openProfile: function(event) {
     this.$(".modal").addClass("open");
+  },
+  closeProfile2: function(event) {
+    event.preventDefault();
+    if($(event.target)[0] === $("div.js-modal-close")[0]) {
+      this.$(".modal").removeClass("open");
+    }
+  },
+  closeProfile: function(event) {
+    if(event.keyCode === 27) {
+      this.$(".modal").removeClass("open");
+    }
+  },
+
+  remove: function() {
+    Backbone.View.prototype.remove.call(this);
+    this.eachSubview(function (subview) {
+      subview.remove();
+    });
+    $(window).off();
   },
 
   follow: function(event) {
@@ -62,11 +89,7 @@ ShutterStep.Views.SidebarView = Backbone.CompositeView.extend({
 
   submit: function(event){
     event.preventDefault();
-    this.model.save({}, {
-      success: function() {
-        alert("hi");
-      }
-    });
+    this.model.save({});
   },
 
   fileInputChange: function(event){

@@ -11,6 +11,14 @@ ShutterStep.Views.HeaderView = Backbone.CompositeView.extend({
     this.$el.html(content);
     return this;
   },
+  
+  remove: function() {
+    Backbone.View.prototype.remove.call(this);
+    this.eachSubview(function (subview) {
+      subview.remove();
+    });
+    $(window).off();
+  },
 
   events: {
     "click .sign-out": "signOut",
