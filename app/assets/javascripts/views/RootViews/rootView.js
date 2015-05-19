@@ -19,8 +19,8 @@ ShutterStep.Views.RootView = Backbone.View.extend({
   },
 
   events: {
-    "mouseover li.picture-feed": "bouncePicture",
-    "mouseout li.picture-feed": "stopBouncePicture",
+    "mouseenter li.picture-feed": "bouncePicture",
+    "mouseleave li.picture-feed": "stopBouncePicture",
     "click li.picture-feed": "showPicture",
     "click button": "changePage"
   },

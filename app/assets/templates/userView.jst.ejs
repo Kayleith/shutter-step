@@ -1,6 +1,39 @@
+<header class="root"></header>
+<main class="content group">
+  <section class="content-sidebar">
+    <a href="#" class="profile-picture">
+    </a>
+
+    <div class="profile-info">
+      <h2><%= user.escape("first_name") %> <%= user.escape("last_name") %></h2>
+
+    </div>
+
+    <ul class="profile-nav">
+			<li>
+				<a href="#">Following</a>
+				<ul class="profile-following group">
+				</ul>
+			</li>
+      <li>
+				<a href="#">Followers</a>
+				<ul class="profile-followers group">
+	      </ul>
+			</li>
+      <li>
+				<a href="#">Favorited Photos</a>
+			</li>
+    </ul>
+  </section>
+  <section class="content-main">
+
+  </section>
+</main>
+
+
+
 <label>
-<%= user.escape("first_name") %><br>
-<%= user.escape("last_name") %><br>
+
 <%= user.escape("username") %><br>
 <%= user.escape("birthday") %><br>
 <%= user.escape("sex") %><br>

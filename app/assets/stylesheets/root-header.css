@@ -26,6 +26,8 @@
   max-height: 300px;
   overflow-y: auto;
   border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
 }
@@ -36,8 +38,6 @@
 
 .result {
   padding: 10px 0;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
   background: white;
   color:black;
 }
@@ -76,7 +76,6 @@
 .root-nav-logo {
   float: left;
   cursor:pointer;
-  padding: 5px;
 }
 
 .root-nav-logo img{

@@ -2,7 +2,8 @@ ShutterStep.Views.HeaderView = Backbone.CompositeView.extend({
   template: JST['headerView'],
 
   initialize: function() {
-    this._userSearchView = new ShutterStep.Views.UserSearchView({parent: this, collection: this.collection});
+    this.listenTo(this.collection, 'sync', this.renderUsers);
+    $(window).on("click", this.closeUsers);
   },
 
   render: function() {
@@ -12,7 +13,51 @@ ShutterStep.Views.HeaderView = Backbone.CompositeView.extend({
   },
 
   events: {
-    "click .sign-out": "signOut"
+    "click .sign-out": "signOut",
+    "keyup .root-user-search": "searchUsers",
+    "focusin .root-user-search": "openUsers"
+  },
+
+  openUsers: function(event) {
+    if (this.$(".root-user-search").val() != "") {
+      this.$(".user-results").addClass("visible");
+    }
+  },
+
+  closeUsers: function(event) {
+    if(event && event.target.className === "root-user-search") {
+      return;
+    } else if(event && event.target.className === "user-results") {
+      return;
+    }
+    this.$(".user-results").removeClass("visible");
+  },
+
+  searchUsers: function(event) {
+    this.$(".user-results").addClass("visible");
+    var query = this.$(".root-user-search").val();
+    if (query === "") {
+      this.eachSubview(function (subview) {
+        subview.remove();
+      });
+      $(".user-results").removeClass("visible");
+      return;
+    }
+    this.collection.fetch({
+      traditional: true,
+      data: {query: query}
+    });
+  },
+
+  renderUsers: function(event, users) {
+    this.eachSubview(function (subview) {
+      subview.remove();
+    });
+
+    this.collection.each(function(user) {
+      var resultView = new ShutterStep.Views.ResultView({parent: this, model: user});
+      this.addSubview(".user-results", resultView);
+    }.bind(this))
   },
 
   signOut: function(event) {

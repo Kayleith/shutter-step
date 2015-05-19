@@ -17,8 +17,8 @@
   width: 100%;
   height: 100px;
   z-index: 100000000;
-  border-bottom: 1px solid black;
-  background: white;
+  border-bottom: 1px solid #49494A;
+  background: #A7A9AC;
 }
 
 .animationbackground {
@@ -29,15 +29,15 @@
 @keyframes fadeinbackground {
   from { background: transparent;
          border-bottom: 0;}
-  to { background: white;
-       border-bottom: 1px solid black;}
+  to { background: #A7A9AC;
+       border-bottom: 1px solid #49494A;}
 }
 
 @-webkit-keyframes fadeinbackground {
   from { background: transparent;
          border-bottom: 0;}
-  to { background: white;
-       border-bottom: 1px solid black;}
+  to { background: #A7A9AC;
+       border-bottom: 1px solid #49494A;}
 }
 
 .animationbackground-r {
@@ -46,15 +46,15 @@
 }
 
 @keyframes fadeinbackground-r {
-  from { background: white;
-         border-bottom: 1px solid black;}
+  from { background: #A7A9AC;
+         border-bottom: 1px solid #49494A;}
   to { background: transparent;
        border-bottom: 0;}
 }
 
 @-webkit-keyframes fadeinbackground-r {
-  from { background: white;
-         border-bottom: 1px solid black;}
+  from { background: #A7A9AC;
+         border-bottom: 1px solid #49494A;}
   to { background: transparent;
        border-bottom: 0;}
 }
@@ -62,15 +62,15 @@
 .landing-page-logo {
   display: block;
   position: absolute;
-  background: white;
+  background: #A7A9AC;
   left: 20%;
   top: 0px;
   width: auto;
   height: 79px;
   padding: 10px;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
+  border-left: 1px solid #49494A;
+  border-right: 1px solid #49494A;
+  border-bottom: 1px solid #49494A;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -83,10 +83,10 @@
 }
 
 @keyframes removeborder {
-  from { background: white;
-         border-left: 1px solid black;
-         border-right: 1px solid black;
-         border-bottom: 1px solid black;
+  from { background: #A7A9AC;
+         border-left: 1px solid #49494A;
+         border-right: 1px solid #49494A;
+         border-bottom: 1px solid #49494A;
          border-bottom-left-radius: 5px;
          border-bottom-right-radius: 5px;}
   to { background: transparent;
@@ -95,10 +95,10 @@
 }
 
 @-webkit-keyframes removeborder {
-  from { background: white;
-         border-left: 1px solid black;
-         border-right: 1px solid black;
-         border-bottom: 1px solid black;
+  from { background: #A7A9AC;
+         border-left: 1px solid #49494A;
+         border-right: 1px solid #49494A;
+         border-bottom: 1px solid #49494A;
          border-bottom-left-radius: 5px;
          border-bottom-right-radius: 5px;}
   to { background: transparent;
@@ -114,9 +114,9 @@
 @keyframes addborder {
   from { border: 0;
          border-radius: 0;}
-  to { border-left: 1px solid black;
-         border-right: 1px solid black;
-         border-bottom: 1px solid black;
+  to { border-left: 1px solid #49494A;
+         border-right: 1px solid #49494A;
+         border-bottom: 1px solid #49494A;
          border-bottom-left-radius: 5px;
          border-bottom-right-radius: 5px;}
 }
@@ -124,9 +124,9 @@
 @-webkit-keyframes addborder {
   from { border: 0;
          border-radius: 0;}
-  to { border-left: 1px solid black;
-         border-right: 1px solid black;
-         border-bottom: 1px solid black;
+  to { border-left: 1px solid #49494A;
+         border-right: 1px solid #49494A;
+         border-bottom: 1px solid #49494A;
          border-bottom-left-radius: 5px;
          border-bottom-right-radius: 5px;}
 }
@@ -135,7 +135,7 @@
   display: block;
   width: 700px;
   position: absolute;
-  color: white;
+  color: #A7A9AC;
   right: 10%;
   top: 0px;
   font-size: 12px;
@@ -143,35 +143,35 @@
 }
 
 .animationcolor {
-  color: black;
+  color: #49494A;
   -webkit-animation: fadeincolor 2s;
   animation: fadeincolor 2s;
 }
 
 @keyframes fadeincolor {
-  from { color: white; }
-  to { color: black; }
+  from { color: #A7A9AC; }
+  to { color: #49494A; }
 }
 
 @-webkit-keyframes fadeincolor {
-  from { color: white; }
-  to { color: black; }
+  from { color: #A7A9AC; }
+  to { color: #49494A; }
 }
 
 .animationcolor-r {
-  color: white;
+  color: #A7A9AC;
   -webkit-animation: fadeincolor-r 2s;
   animation: fadeincolor-r 2s;
 }
 
 @keyframes fadeincolor-r {
-  from { color: black; }
-  to { color: white; }
+  from { color: #49494A; }
+  to { color: #A7A9AC; }
 }
 
 @-webkit-keyframes fadeincolor-r {
-  from { color: black; }
-  to { color: white; }
+  from { color: #49494A; }
+  to { color: #A7A9AC; }
 }
 
 .landing-page-text {
@@ -188,9 +188,9 @@
 .landing-page-form {
   padding-left: 10px;
   margin-top: 5px;
-  background: white;
-  color: black;
-  border: 1px solid black;
+  background: #A7A9AC;
+  color: #49494A;
+  border: 1px solid #49494A;
   height: 21px;
   width: 148px;
 }
@@ -228,7 +228,7 @@
   top: 64%;
   left: 21%;
   text-align: center;
-  color: rgba(255, 255, 255, .5);å
+  color: rgba(255, 255, 255, .5);
 }
 .landing-page-sign-in-message h1 {
   font-size: 24px;
@@ -260,8 +260,8 @@
 }
 
 .landing-page-sign-up-form input.fields {
-  color: white;
-  background: black;
+  color: #A7A9AC;
+  background: #49494A;
   padding-left: 10px;
   border-right: 1px solid #09afd7;
   border-top: 1px solid #09afd7;
@@ -274,8 +274,8 @@
 }
 
 .landing-page-sign-up-form input.name1 {
-  color: white;
-  background: black;
+  color: #A7A9AC;
+  background: #49494A;
   padding-left: 10px;
   border-right: 1px solid #09afd7;
   border-top: 1px solid #09afd7;
@@ -289,8 +289,8 @@
 }
 
 .landing-page-sign-up-form input.name2 {
-  color: white;
-  background: black;
+  color: #A7A9AC;
+  background: #49494A;
   padding-left: 10px;
   border-right: 1px solid #09afd7;
   border-top: 1px solid #09afd7;

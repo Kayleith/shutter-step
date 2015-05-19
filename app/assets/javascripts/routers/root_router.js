@@ -46,9 +46,6 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
     ShutterStep.currentUser.fetch({
       success: function () {
         if (!this._requireSignedIn(callback)) { return; }
-
-        this._headerView = new ShutterStep.Views.HeaderView({collection: ShutterStep.searchusers});
-
         var user = this.collection.getOrFetch(id);
         user.fetch({
           success: function() {

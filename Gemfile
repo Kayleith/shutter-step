@@ -17,6 +17,10 @@ ruby '2.1.2'
 gem 'faker'
 gem 'kaminari'
 
+gem "paperclip", "~> 4.2"
+gem "figaro"
+gem "aws-sdk"
+
 group :doc do
   gem 'sdoc', require: false
 end

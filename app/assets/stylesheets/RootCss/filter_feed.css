@@ -1,25 +1,26 @@
 .picture-feed {
+  padding: 5px;
   float: left;
-  width: 50%;
-  height: 50%;
+  width: 23%;
+  height: 23%;
   text-align: center;
-  min-width: 300px;
 }
 
 .thumb {
   display: block;
   position: relative;
-  width: 80%;
-  height: 80%;
-  border: 1px solid #000;
-  border-radius: 5px;
+  width: 100px;
+  height: 100px;
   margin: auto;
+  border-radius: 5px;
+  border: 1px solid #000;
   overflow: hidden;
 }
 
 .thumb > img {
-  border-radius: 5px;
-  max-height: 164px;
+  margin: auto;
+  width: auto;
+  height: 100%;
 }
 
 .pages-out-of-total {

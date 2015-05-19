@@ -17,7 +17,7 @@ ShutterStep.Views.ResultView = Backbone.CompositeView.extend({
 
   openProfile: function(event) {
     this.parent.closeUsers();
-    this.parent.$el.val('');
+    this.parent.$(".root-user-search").val('');
     this.parent.searchUsers(event);
     Backbone.history.navigate("#users/" + this.model.id, {trigger: true});
   }

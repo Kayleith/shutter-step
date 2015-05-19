@@ -12,20 +12,62 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
   initMap: function(event) {
     var mapOptions = {
           center: { lat: 0, lng: 0},
-          zoom: 2,
+          zoom: 1,
           disableDefaultUI: true,
-          minZoom: 2
+          minZoom: 1
         };
 
     this._map = new google.maps.Map(this.el,mapOptions);
-    var styles = [{
-       "featureType": "poi",
-       "stylers": [{ "visibility": "off" }]
-      }];
+    var styles = [
+      { "featureType": "landscape",
+      "stylers": [
+        { "hue": "#F1FF00" },
+        { "saturation": -27.4 },
+        { "lightness": 9.4 },
+        { "gamma": 1 }]},
+      { "featureType": "road.highway",
+        "stylers": [
+        { "hue": "#0099FF"},
+        { "saturation": -20 },
+        { "lightness": 36.4 },
+        { "gamma": 1 }]},
+      { "featureType": "road.arterial",
+        "stylers": [
+        { "hue": "#00FF4F" },
+        { "saturation": 0 },
+        { "lightness": 0 },
+        { "gamma": 1 }]},
+      { "featureType": "road.local",
+        "stylers": [
+        { "hue": "#FFB300" },
+        { "saturation": -38 },
+        { "lightness": 11.2 },
+        { "gamma": 1 }]},
+      { "featureType": "water",
+        "stylers": [
+        { "hue": "#00B6FF" },
+        { "saturation": 4.2 },
+        { "lightness": -63.4 },
+        { "gamma": 1 }]},
+      { "featureType": "poi",
+        "stylers": [{ "visibility": "off" }]}
+        // "stylers": [
+        // { "hue": "#9FFF00" },
+        // { "saturation": 0 },
+        // { "lightness": 0 },
+        // { "gamma": 1 }]}
+    ];
+
     this._map.setOptions({styles: styles});
 
     this._infoWindow;
     this._submitWindow;
+
+    $(".currentView").append("<input id=\"pac-input\" class=\"controls\" type=\"text\" width=300px placeholder=\"Search Box\"/>");
+
+    var input = $('#pac-input')[0];
+    this._map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    this._searchBox = new google.maps.places.SearchBox(input);
 
     this.attachMapListeners();
   },
@@ -33,6 +75,21 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
   attachMapListeners: function () {
     // google.maps.event.addListener(this._map, 'idle', this.search.bind(this));
     google.maps.event.addListener(this._map, 'click', this.createPictureForm.bind(this));
+    google.maps.event.addListener(this._searchBox, 'places_changed', this.searchForm.bind(this));
+  },
+
+  searchForm: function() {
+    var places = this._searchBox.getPlaces();
+    var placePosition = places[0].geometry.location;
+
+    this.closeWindows();
+    this._submitWindow = new google.maps.InfoWindow({
+      content: JST['submitWindow'](),
+      position: placePosition
+    });
+    this.zoom(23);
+    this._map.panTo(placePosition);
+    this._submitWindow.open(this._map);
   },
 
   addMarker: function (picture) {
@@ -79,7 +136,7 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
   },
 
   resetMap: function(event) {
-    this._map.setOptions({center: { lat: 0, lng: 0}, zoom: 2});
+    this._map.setOptions({center: { lat: 0, lng: 0}, zoom: 1});
   },
 
   reset: function(event) {
