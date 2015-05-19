@@ -5,7 +5,6 @@ window.ShutterStep = {
   Routers: {},
   initialize: function() {
     this.currentUser = new ShutterStep.Models.CurrentUser();
-    this.currentUser.fetch();
 
     this.searchusers = new ShutterStep.Collections.UsersSearch();
     this.users = new ShutterStep.Collections.Users();

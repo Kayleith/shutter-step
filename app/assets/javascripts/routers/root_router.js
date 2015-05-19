@@ -14,20 +14,26 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
     "users/:id": "userProfile"
   },
 
-  signIn: function(callback){
-    if (!this._requireSignedOut(callback)) { return; }
+  signIn: function(callback) {
+    $(window).off("**");
+    ShutterStep.currentUser.fetch({
+      success: function () {
+        if (!this._requireSignedOut(callback)) { return; }
 
-    var model = new ShutterStep.Models.User();
+        var model = new ShutterStep.Models.User();
 
-    var signInView = new ShutterStep.Views.SignIn({
-      callback: callback,
-      collection: this.collection,
-      model: model
+        var signInView = new ShutterStep.Views.SignIn({
+          callback: callback,
+          collection: this.collection,
+          model: model
+        });
+        this._swapView(signInView);
+      }.bind(this)
     });
-    this._swapView(signInView);
   },
 
   root: function() {
+    $(window).off("**");
     var callback = this.root.bind(this);
     ShutterStep.currentUser.fetch({
       success: function () {
@@ -42,24 +48,21 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
   },
 
   userProfile: function(id) {
+    $(window).off("**");
     var callback = this.userProfile.bind(this, id);
+    var user = this.collection.getOrFetch(id);
     ShutterStep.currentUser.fetch({
       success: function () {
         if (!this._requireSignedIn(callback)) { return; }
-        var user = this.collection.getOrFetch(id);
-        user.fetch({
-          success: function() {
-            var userView = new ShutterStep.Views.UserView({model: user});
-            this._swapView(userView);
-          }.bind(this)
-        });
+        var userView = new ShutterStep.Views.UserView({model: user});
+        this._swapView(userView);
       }.bind(this)
     });
   },
 
   _requireSignedIn: function(callback){
     if (!ShutterStep.currentUser.isSignedIn()) {
-      callback = callback || this._goHome.bind(this);
+      callback = callback || this._goLogin.bind(this);
       this.signIn(callback);
       return false;
     }
