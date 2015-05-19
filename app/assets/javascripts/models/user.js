@@ -25,6 +25,17 @@ ShutterStep.Models.User = Backbone.Model.extend({
     return this._pictures;
   },
 
+  toJSON: function(){
+    // We want proper namespacing of our attributes in Rails.
+    var json = {user: _.clone(this.attributes)};
+
+    if (this._avatar) {
+      json.user.avatar = this._avatar;
+    }
+
+    return json;
+  },
+
   parse: function (response) {
     if (response.followers) {
       this.followers().set(response.followers);
@@ -40,7 +51,7 @@ ShutterStep.Models.User = Backbone.Model.extend({
     }
     return response;
   }
-})
+});
 
 ShutterStep.Models.CurrentUser = ShutterStep.Models.User.extend({
 

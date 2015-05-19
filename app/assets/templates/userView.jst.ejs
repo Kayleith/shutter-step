@@ -1,23 +1,42 @@
 <header class="root"></header>
-<main class="content group">
-  <section class="content-sidebar">
+<main class="profile-content group">
+  <section class="profile-content-sidebar">
     <a href="#" class="profile-picture">
+			<img src="<%= user.escape("medium_image_url")%>" />
     </a>
 
     <div class="profile-info">
-      <h2><%= user.escape("first_name") %> <%= user.escape("last_name") %></h2>
-
+		<button data-user-id="<%= user.id %>">Follow</button>
+      <h1><%= user.escape("first_name") %> <%= user.escape("last_name") %></h1>
+			<h2>Username: <%= user.escape("username") %></h2>
+			<h2>Birthday: <%= user.escape("birthday") %></h2>
+			<h2>Sex     : <%= user.escape("sex") %></h2>
     </div>
 
     <ul class="profile-nav">
 			<li>
-				<a href="#">Following</a>
+				<a href="#">Following: <%= user.following().models.length %></a>
 				<ul class="profile-following group">
+					<% user.following().each(function(following) { %>
+						<li>
+							<label class="friend-name">
+								<%= following.escape("username") %>
+							</label>
+							<img src="<%= user.escape("thumb_image_url")%>" />
+						</li>
+					<% }) %>
 				</ul>
 			</li>
       <li>
-				<a href="#">Followers</a>
+				<a href="#">Followers: <%= user.followers().models.length %></a>
 				<ul class="profile-followers group">
+					<% user.followers().each(function(follower) { %>
+						<%= follower.escape("first_name") %><br>
+						<%= follower.escape("last_name") %><br>
+						<%= follower.escape("username") %><br>
+						<%= follower.escape("birthday") %><br>
+						<%= follower.escape("sex") %><br>
+					<% }) %>
 	      </ul>
 			</li>
       <li>
@@ -25,46 +44,10 @@
 			</li>
     </ul>
   </section>
-  <section class="content-main">
+  <section class="profile-content-main">
 
   </section>
 </main>
-
-
-
-<label>
-
-<%= user.escape("username") %><br>
-<%= user.escape("birthday") %><br>
-<%= user.escape("sex") %><br>
-</label>
-<br>
-<br>
-<button data-user-id="<%= user.id %>">Follow</button>
-<br>
-<br>
-<label>
-Followers: <%= user.followers().models.length %><br>
-<% user.followers().each(function(follower) { %>
-	<%= follower.escape("first_name") %><br>
-	<%= follower.escape("last_name") %><br>
-	<%= follower.escape("username") %><br>
-	<%= follower.escape("birthday") %><br>
-	<%= follower.escape("sex") %><br>
-<% }) %>
-</label>
-
-<label>
-<br>
-Following: <%= user.following().models.length %><br>
-<% user.following().each(function(following) { %>
-	<%= following.escape("first_name") %><br>
-	<%= following.escape("last_name") %><br>
-	<%= following.escape("username") %><br>
-	<%= following.escape("birthday") %><br>
-	<%= following.escape("sex") %><br>
-<% }) %>
-</label>
 
 <label class="profile-picture-collection">
 <br>
