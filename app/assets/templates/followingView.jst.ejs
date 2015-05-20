@@ -8,9 +8,16 @@
         <label class="friend-name">
           <%= follow.escape("username") %>
         </label>
-        <img src="<%= follow.escape("thumb_image_url")%>" />
+        <a href="#users/<%=follow.id%>">
+          <img src="<%= follow.escape("thumb_image_url")%>" />
+        </a>
       </li>
       <% i++ %>
     <% }) %>
   </ul>
 </li>
+
+<div class="modal-following">
+  <div class="modal-screen-following js-modal-close">
+  </div>
+</div>

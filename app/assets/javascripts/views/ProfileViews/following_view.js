@@ -7,5 +7,13 @@ ShutterStep.Views.FollowingView = Backbone.CompositeView.extend({
     var content = this.template({following: this.collection});
     this.$el.html(content);
     return this;
+  },
+
+  events: {
+    "click .menu-item": "showFollowing",
+  },
+
+  showFollowing: function(event) {
+    this.$(".modal-following").addClass("open");
   }
 });

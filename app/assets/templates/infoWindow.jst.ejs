@@ -1,7 +1,13 @@
 <section id='picture-map'>
   <article id='<%=picture.id %>'>
     <h1><%=picture.escape("title") %></h1>
-    <label>By:<%=user.get("first_name") %> <%=user.get("last_name")%></label>
+    <a class="info-window-thumb-link" href="#users/<%=user.id%>">
+      <div class="info-window-thumb">
+        <img src="<%= user.escape("thumb_image_url") %>" alt="" />
+      </div>
+      <label><%=user.escape("first_name") %> <%=user.escape("last_name")%></label>
+    </a>
+
     <img src="<%=picture.escape("url")%>">
     <p><%=picture.escape("description")%></p>
   </article>

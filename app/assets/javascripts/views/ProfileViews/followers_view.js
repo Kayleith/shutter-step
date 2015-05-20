@@ -7,5 +7,13 @@ ShutterStep.Views.FollowersView = Backbone.CompositeView.extend({
     var content = this.template({followers: this.collection});
     this.$el.html(content);
     return this;
+  },
+
+  events: {
+    "click .menu-item": "showFollowers",
+  },
+
+  showFollowers: function(event) {
+    this.$(".modal-followers").addClass("open");
   }
 });
