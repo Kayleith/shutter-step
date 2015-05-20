@@ -21,9 +21,12 @@ ShutterStep.Views.FollowersView = Backbone.CompositeView.extend({
   },
 
   render: function() {
-    this.loadData();
     var content = this.template({followers: this.collection});
     this.$el.html(content);
+    this.collection.each(function(model) {
+      var followerView = new ShutterStep.Views.FollowerView({model: model});
+      this.$(".user-followers-ul").append(followerView.render().$el);
+    }.bind(this));
     return this;
   },
 
@@ -33,7 +36,7 @@ ShutterStep.Views.FollowersView = Backbone.CompositeView.extend({
   },
 
   loadNextPage: function(event) {
-    if($("#scroll-followers").height() + $("#scroll-followers").scrollTop() === $(".user-followers-ul").height()) {
+    if($("#scroll-followers").height() + $("#scroll-followers").scrollTop() >= $(".user-followers-ul").height()-20) {
       if(this._page <= this.collection.total_pages) {
         this._page = this._page + 1;
         this.loadData();

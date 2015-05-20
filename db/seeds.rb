@@ -16,8 +16,10 @@ bot1 = User.create({first_name: "wiki",
                      birthday: Date.new(1997,8,29),
                      sex: "robot" })
 
+sampleProfiles = []
+
 500.times do
-  User.create(
+  a = User.new(
     {first_name: Faker::Name.first_name,
      last_name: Faker::Name.last_name,
      password: "password",
@@ -25,7 +27,11 @@ bot1 = User.create({first_name: "wiki",
      email: Faker::Internet.email,
      birthday: Faker::Date.backward(36500),
      sex: rand(2) == 1 ? "Male" : "Female"})
+
+  a.avatar = File.new(asset_path(Faker::Avatar.image))
+  a.save!
 end
+
 usernumber = User.all.count
 randomURL = ["http://i667.photobucket.com/albums/vv39/marie58_bucket/Funny/485588_481258538613952_550173339_n.jpg",
              "http://i223.photobucket.com/albums/dd245/2ndsite/Funny%20Stuff/i3608_kxc8zdesandcastly.jpg",

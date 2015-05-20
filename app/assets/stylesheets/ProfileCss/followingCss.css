@@ -30,14 +30,21 @@
 
 .user-follow-li {
   display: block;
-  background: orange;
   height: 60px;
+  width: auto;
+}
+.user-follow-li a {
+  float:left;
+  display: block;
+  height: auto;
   width: 60px;
 }
 
 .user-follow-li img {
   display: block;
-  background: green;
   width: 100%;
   height: auto;
+}
+.user-follow-li ul {
+  float: left;
 }
