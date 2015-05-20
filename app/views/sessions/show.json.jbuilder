@@ -11,5 +11,5 @@ json.pictures @current_user.pictures do |picture|
 	json.extract! picture, :user_id, :title, :description, :url, :lat, :lng,  :created_at, :updated_at
 end
 
-json.large_image_url asset_path(@current_user.avatar.url(:large))
+json.original_image_url asset_path(@current_user.avatar.url(:original))
 json.thumb_image_url asset_path(@current_user.avatar.url(:thumb))

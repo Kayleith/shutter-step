@@ -8,7 +8,7 @@
  * @version version 1.0.1
  * @author Luke Mahe
  * @fileoverview
- * The library creates and manages per-zoom-level clusters for large amounts of
+ * The library creates and manages per-zoom-level clusters for original amounts of
  * markers.
  * <br/>
  * This is a v3 implementation of the
@@ -753,7 +753,7 @@ MarkerClusterer.prototype.distanceBetweenPoints_ = function(p1, p2) {
  * @private
  */
 MarkerClusterer.prototype.addToClosestCluster_ = function(marker) {
-  var distance = 40000; // Some large number
+  var distance = 40000; // Some original number
   var clusterToAddTo = null;
   var pos = marker.getPosition();
   for (var i = 0, cluster; cluster = this.clusters_[i]; i++) {

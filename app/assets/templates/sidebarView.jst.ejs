@@ -1,6 +1,6 @@
 <div class="profile-picture">
   <button id="follow">Follow</button>
-  <img src="<%= user.escape("large_image_url")%>" />
+  <img src="<%= user.escape("original_image_url")%>" />
 </div>
 
 <div class="modal">
@@ -11,7 +11,7 @@
         <button id="input-user-avatar">Change Profile Picture</button>
       </form>
     <% } %>
-    <img src="<%= user.escape("large_image_url")%>" alt="" />
+    <img src="<%= user.escape("original_image_url")%>" alt="" />
   </div>
 </div>
 

@@ -16,7 +16,8 @@ bot1 = User.create({first_name: "wiki",
                      birthday: Date.new(1997,8,29),
                      sex: "robot" })
 
-sampleProfiles = []
+alb = ('a'..'z').to_a
+sampleProfiles = alb.map{|letter| letter + ".png"}.concat(alb.map{|letter| letter*2 + ".png"}).concat(alb.map{|letter| letter*3 + ".png"})
 
 500.times do
   a = User.new(
@@ -28,8 +29,8 @@ sampleProfiles = []
      birthday: Faker::Date.backward(36500),
      sex: rand(2) == 1 ? "Male" : "Female"})
 
-  a.avatar = File.new(asset_path(Faker::Avatar.image))
-  a.save!
+  a.avatar = File.new(::Rails.root.join("app", "assets", "images", sampleProfiles[rand(78)]))
+  a.save
 end
 
 usernumber = User.all.count
@@ -37,8 +38,8 @@ randomURL = ["http://i667.photobucket.com/albums/vv39/marie58_bucket/Funny/48558
              "http://i223.photobucket.com/albums/dd245/2ndsite/Funny%20Stuff/i3608_kxc8zdesandcastly.jpg",
              "http://i223.photobucket.com/albums/dd245/2ndsite/Funny%20Stuff/OhGRATE.jpg",
              "http://i210.photobucket.com/albums/bb270/Lizaer/All%20things%20witch/Oceanfullmoon.jpg",
-             "http://i905.photobucket.com/albums/ac251/YelowRose_2010/YelowRose_2010-Nature%20and%20Others/enna-nature-labrujita-inspiration_large.jpg",
-             "http://i905.photobucket.com/albums/ac251/YelowRose_2010/YelowRose_2010-Nature%20and%20Others/256_1276413047476jpg-image-nature-flowers_large.jpg",
+             "http://i905.photobucket.com/albums/ac251/YelowRose_2010/YelowRose_2010-Nature%20and%20Others/enna-nature-labrujita-inspiration_original.jpg",
+             "http://i905.photobucket.com/albums/ac251/YelowRose_2010/YelowRose_2010-Nature%20and%20Others/256_1276413047476jpg-image-nature-flowers_original.jpg",
              "http://i905.photobucket.com/albums/ac251/YelowRose_2010/YelowRose_2010-Nature%20and%20Others/Picture001.jpg",
              "http://i661.photobucket.com/albums/uu332/ilovemooks/nature-1.jpg",
              "http://i203.photobucket.com/albums/aa93/wakebabe414/nature-438907.jpg",
@@ -70,6 +71,7 @@ usernumber.times do |i|
   user2 = (user1 + rand(usernumber - user1) + 1)
   while(user1 < user2) do
     Relationship.create({follower_id: user1, followed_id: user2})
+    Relationship.create({follower_id: user2, followed_id: user1})
     user1 += 1
   end
 end
