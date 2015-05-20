@@ -5,7 +5,6 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
     this.$rootEl = options.$rootEl;
 
     this.collection = ShutterStep.users;
-    this.collection.fetch();
   },
 
   routes: {
@@ -44,7 +43,6 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
         this._swapView(rootView);
       }.bind(this)
     });
-
   },
 
   userProfile: function(id) {

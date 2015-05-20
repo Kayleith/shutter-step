@@ -1,8 +1,8 @@
 <li>
-  <label class="menu-item">Followers: <%= followers.models.length %></label>
+  <label class="menu-item">Followers: <%= followers.followers_total %></label>
   <ul class="profile-followers group">
     <% var i = 0 %>
-    <% followers.shuffle().forEach(function(follower) { %>
+    <% followers.each(function(follower) { %>
       <% if(i === 9) return; %>
       <li>
         <label class="friend-name">
@@ -16,18 +16,11 @@
     <% }) %>
   </ul>
 </li>
-
 <div class="modal-followers">
   <div class="modal-screen-followers js-modal-close">
-    <ul class="user-followers-ul group">
-      <% followers.each(function(follower) { %>
-        <li class="user-follower-li">
-          <a href="#users/<%=follower.id%>">
-            <img src="<%= follower.escape("thumb_image_url")%>" />
-          </a>
-        </li>
-        <br>
-      <% }) %>
-    </ul>
+    <div id="scroll-followers">
+      <ul class="user-followers-ul">
+      </ul>
+    </div>
   </div>
 </div>

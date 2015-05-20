@@ -3,15 +3,7 @@
   <section class="profile-content-sidebar">
   </section>
   <section class="profile-content-main">
-
   </section>
   <section class="profile-uploaded-pictures">
-    Pictures: <%= user.pictures().models.length %><br>
-
-    <% user.pictures().each(function(picture) { %>
-      <div class="thumb-nail">
-    	   <img data-id="<%=picture.id%>" src="<%= picture.escape("url")%>" alt="" />
-      </div>
-    <% }) %>
   </section>
 </main>

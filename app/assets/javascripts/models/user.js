@@ -1,5 +1,24 @@
 ShutterStep.Models.User = Backbone.Model.extend({
   urlRoot: "/users",
+  toJSON: function(){
+    // We want proper namespacing of our attributes in Rails.
+    var json = {user: _.clone(this.attributes)};
+
+    if (this._avatar) {
+      json.user.avatar = this._avatar;
+    }
+
+    return json;
+  }
+});
+
+ShutterStep.Models.CurrentUser = ShutterStep.Models.User.extend({
+
+  url: "/session",
+
+  initialize: function(options){
+    this.listenTo(this, "change", this.fireSessionEvent);
+  },
 
   followers: function () {
     if (!this._followers) {
@@ -17,48 +36,16 @@ ShutterStep.Models.User = Backbone.Model.extend({
     return this._following;
   },
 
-  pictures: function() {
-    if (!this._pictures) {
-      this._pictures = new ShutterStep.Collections.Pictures();
-    }
-
-    return this._pictures;
-  },
-
-  toJSON: function(){
-    // We want proper namespacing of our attributes in Rails.
-    var json = {user: _.clone(this.attributes)};
-
-    if (this._avatar) {
-      json.user.avatar = this._avatar;
-    }
-
-    return json;
-  },
-
   parse: function (response) {
-    if (response.followers) {
-      this.followers().set(response.followers);
-      delete response.followers;
-    }
-    if (response.following) {
-      this.following().set(response.following);
-      delete response.following;
-    }
-    if (response.pictures) {
-      this.pictures().set(response.pictures);
-      delete response.pictures;
-    }
-    return response;
-  }
-});
-
-ShutterStep.Models.CurrentUser = ShutterStep.Models.User.extend({
-
-  url: "/session",
-
-  initialize: function(options){
-    this.listenTo(this, "change", this.fireSessionEvent);
+     if (response.followers) {
+       this.followers().set(response.followers);
+       delete response.followers;
+     }
+     if (response.following) {
+       this.following().set(response.following);
+       delete response.following;
+     }
+     return response;
   },
 
   isSignedIn: function() {

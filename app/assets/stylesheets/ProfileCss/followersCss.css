@@ -16,12 +16,16 @@
   z-index: 2;
 }
 
-.user-followers-ul {
+#scroll-followers {
   display: block;
+  position: absolute;
   background: white;
-  width: 500px;
-  margin: auto;
-  overflow: auto;
+  top: 25%;
+  left: 35%;
+  width: 30%;
+  height: 50%;
+  z-index: 3;
+  overflow-y: auto;
 }
 
 .user-follower-li {

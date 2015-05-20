@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, :except => [:index, :new, :create, :search, :following, :followers]
+  before_action :set_user, :except => [:index, :new, :create, :search]
   wrap_parameters false
 
   def new
@@ -36,23 +36,25 @@ class UsersController < ApplicationController
   end
 
   def following
-    @user  = User.find(params[:id])
     @users = @user.following
 
     @following_total = @users.count
-    # @users = @users.page(params[:page]).per(9)
+    @users = Kaminari.paginate_array(@users.shuffle).page(params[:page]).per(9)
+    @page = params[:page].to_i
+    @total_pages = @users.total_pages # thanks kaminari!
 
-    render :search
+    render :following
   end
 
   def followers
-    @user  = User.find(params[:id])
     @users = @user.followers
 
     @followers_total = @users.count
-    # @users = @user.page(params[:page]).per(9)
+    @users = Kaminari.paginate_array(@users.shuffle).page(params[:page]).per(9)
+    @page = params[:page].to_i
+    @total_pages = @users.total_pages # thanks kaminari!
 
-    render :search
+    render :followers
   end
 
   def update

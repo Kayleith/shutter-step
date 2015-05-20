@@ -4,7 +4,7 @@ ShutterStep.Views.UserView = Backbone.View.extend({
   template: JST["userView"],
   initialize: function() {
     this._headerView = new ShutterStep.Views.HeaderView({collection: ShutterStep.searchusers});
-    // this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model, "sync", this.render);
     this._sidebarView = new ShutterStep.Views.SidebarView({model: this.model});
   },
 

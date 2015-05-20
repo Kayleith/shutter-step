@@ -1,13 +1,14 @@
 ShutterStep.Views.SidebarView = Backbone.CompositeView.extend({
   template: JST["sidebarView"],
   initialize: function() {
-    this._followers = this.model.followers();
-    this._following = this.model.following();
 
-    var followingView = new ShutterStep.Views.FollowingView({collection: this._following});
-    this.addSubview(".profile-nav", followingView);
-    var followersView = new ShutterStep.Views.FollowersView({collection: this._followers});
-    this.addSubview(".profile-nav", followersView);
+    this._followers = new ShutterStep.Collections.Followers();
+    this._following = new ShutterStep.Collections.Following();
+
+    this._followingView = new ShutterStep.Views.FollowingView({model: this.model, collection: this._following});
+    this.addSubview(".profile-nav", this._followingView);
+    this._followersView = new ShutterStep.Views.FollowersView({model: this.model, collection: this._followers});
+    this.addSubview(".profile-nav", this._followersView);
 
     this.listenTo(this.model, 'sync', this.render);
     $(window).on("keydown", this.closeProfile.bind(this));
@@ -17,13 +18,15 @@ ShutterStep.Views.SidebarView = Backbone.CompositeView.extend({
     var content = this.template({user: this.model});
     this.$el.html(content);
 
-    if(this._followers.get(ShutterStep.currentUser.id)) {
+    if(ShutterStep.currentUser.following().get(this.model.id)) {
       this.$(".profile-picture button").text("Unfollow");
     }
     if(this.model.id === ShutterStep.currentUser.id) {
       this.$(".profile-picture button").addClass("hide-button");
     }
     this.attachSubviews();
+    this._followingView.loadData();
+    this._followersView.loadData();
     return this;
   },
 
@@ -50,6 +53,8 @@ ShutterStep.Views.SidebarView = Backbone.CompositeView.extend({
       this.$(".modal").removeClass("open");
       this.$(".modal-following").removeClass("open");
       this.$(".modal-followers").removeClass("open");
+      // this.$("#scroll-following").off("**");
+      // this.$("#scroll-followers").off("**");
     }
   },
 
@@ -65,6 +70,7 @@ ShutterStep.Views.SidebarView = Backbone.CompositeView.extend({
           this.$(".profile-picture button").text("Unfollow");
           this._followers.add(ShutterStep.currentUser);
           ShutterStep.currentUser.following().add(this.model);
+          this._followersView.loadData();
         }.bind(this)
       });
     } else if(this.$(".profile-picture button").text() === "Unfollow") {
@@ -77,6 +83,7 @@ ShutterStep.Views.SidebarView = Backbone.CompositeView.extend({
           this.$(".profile-picture button").text("Follow");
           this._followers.remove(ShutterStep.currentUser);
           ShutterStep.currentUser.following().remove(this.model);
+          this._followersView.loadData();
         }.bind(this)
       });
     }

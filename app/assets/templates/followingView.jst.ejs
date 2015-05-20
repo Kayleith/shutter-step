@@ -1,8 +1,8 @@
 <li>
-  <label class="menu-item">Following: <%= following.models.length %></label>
+  <label class="menu-item">Following: <%= following.following_total %></label>
   <ul class="profile-following group">
     <% var i = 0 %>
-    <% following.shuffle().forEach(function(follow) { %>
+    <% following.each(function(follow) { %>
       <% if(i === 9) return; %>
       <li>
         <label class="friend-name">
@@ -16,8 +16,11 @@
     <% }) %>
   </ul>
 </li>
-
 <div class="modal-following">
   <div class="modal-screen-following js-modal-close">
+    <div id="scroll-following">
+      <ul class="user-following-ul">
+      </ul>
+    </div>
   </div>
 </div>
