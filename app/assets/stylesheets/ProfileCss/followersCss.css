@@ -16,11 +16,24 @@
   z-index: 2;
 }
 
-.modal-followers img {
-  position: absolute;
-  top: 15%;
-  left: 35%;
-  width: 30%;
+.user-followers-ul {
+  display: block;
+  background: white;
+  width: 500px;
+  margin: auto;
+  overflow: auto;
+}
+
+.user-follower-li {
+  display: block;
+  background: orange;
+  height: 60px;
+  width: 60px;
+}
+
+.user-follower-li img {
+  display: block;
+  background: green;
+  width: 100%;
   height: auto;
-  z-index: 3;
 }

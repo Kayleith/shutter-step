@@ -19,5 +19,15 @@
 
 <div class="modal-followers">
   <div class="modal-screen-followers js-modal-close">
+    <ul class="user-followers-ul group">
+      <% followers.each(function(follower) { %>
+        <li class="user-follower-li">
+          <a href="#users/<%=follower.id%>">
+            <img src="<%= follower.escape("thumb_image_url")%>" />
+          </a>
+        </li>
+        <br>
+      <% }) %>
+    </ul>
   </div>
 </div>

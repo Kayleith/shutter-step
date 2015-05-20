@@ -16,7 +16,7 @@
   z-index: 2;
 }
 
-.modal img {
+.modal-screen-profile > img {
   position: absolute;
   top: 15%;
   left: 35%;
