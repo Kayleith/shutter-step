@@ -5,11 +5,16 @@ ShutterStep.Views.FollowersView = Backbone.CompositeView.extend({
     this._page = 1;
     this.listenToOnce(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addFollower);
+    this.listenTo(this.collection, "remove", this.removeFollower);
   },
 
   addFollower: function(model) {
     var followerView = new ShutterStep.Views.FollowerView({model: model});
     this.addSubview(".user-followers-ul", followerView);
+  },
+
+  removeFollower: function(model) {
+    this.removeSubview(".user-followers-ul", model);
   },
 
   loadData: function() {

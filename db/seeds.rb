@@ -70,8 +70,18 @@ usernumber.times do |i|
   user1 = i + 1
   user2 = (user1 + rand(usernumber - user1) + 1)
   while(user1 < user2) do
-    Relationship.create({follower_id: user1, followed_id: user2})
-    Relationship.create({follower_id: user2, followed_id: user1})
+    a = Relationship.new({follower_id: user1, followed_id: user2})
+    a.save
+    user1 += 1
+  end
+end
+
+usernumber.times do |i|
+  user1 = i + 1
+  user2 = (user1 + rand(usernumber - user1) + 1)
+  while(user1 < user2) do
+    a = Relationship.new({follower_id: user2, followed_id: user1})
+    a.save
     user1 += 1
   end
 end
