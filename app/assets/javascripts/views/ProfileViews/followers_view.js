@@ -2,49 +2,37 @@ ShutterStep.Views.FollowersView = Backbone.CompositeView.extend({
   template: JST["followersView"],
 
   initialize: function() {
-    this._page = 1;
-    this.listenToOnce(this.collection, "sync", this.render);
-    this.listenTo(this.collection, "add", this.addFollower);
-    this.listenTo(this.collection, "remove", this.removeFollower);
-  },
-
-  addFollower: function(model) {
-    var followerView = new ShutterStep.Views.FollowerView({model: model});
-    this.addSubview(".user-followers-ul", followerView);
-  },
-
-  removeFollower: function(model) {
-    this.removeSubview(".user-followers-ul", model);
+    this._followers_list = new ShutterStep.Views.FollowersListView({collection: this.collection, model: this.model});
+    this.addSubview(".follower-modal-anchor", this._followers_list);
   },
 
   loadData: function() {
     this.collection.fetch({
               remove: false,
-              data: { page: this._page,
-              id: this.model.id}
+              data: { page: 1,
+              id: this.model.id},
+              success: function() {
+                this.render();
+              }.bind(this)
     });
   },
 
   render: function() {
     var content = this.template({followers: this.collection});
     this.$el.html(content);
-    this.collection.each(function(model) {
-      var followerView = new ShutterStep.Views.FollowerView({model: model});
-      this.$(".user-followers-ul").append(followerView.render().$el);
-    }.bind(this));
+    this.attachSubviews();
     return this;
   },
 
   events: {
-    "click .menu-item": "showFollowers",
-    "scroll #scroll-followers": "loadNextPage"
+    "click .menu-item": "showFollowers"
   },
 
   loadNextPage: function(event) {
-    if($("#scroll-followers").height() + $("#scroll-followers").scrollTop() >= $(".user-followers-ul").height()-20) {
-      if(this._page <= this.collection.total_pages) {
-        this._page = this._page + 1;
-        this.loadData();
+    if($("#scroll-followers").height() + $("#scroll-followers").scrollTop() >= $(".user-followers-ul").height() - 100) {
+      if(this._followers_list._page <= this.collection.total_pages) {
+        this._followers_list._page = this._followers_list._page + 1;
+        this._followers_list.loadData();
       }
     }
   },

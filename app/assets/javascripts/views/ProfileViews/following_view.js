@@ -2,45 +2,37 @@ ShutterStep.Views.FollowingView = Backbone.CompositeView.extend({
   template: JST["followingView"],
 
   initialize: function() {
-    this._page = 1;
-    this.listenToOnce(this.collection, "sync", this.render);
-    this.listenTo(this.collection, "add", this.addFollow);
-  },
-
-  addFollow: function(model) {
-    var followView = new ShutterStep.Views.FollowView({model: model});
-    this.addSubview(".user-following-ul", followView);
+    this._followingList = new ShutterStep.Views.FollowingListView({collection: this.collection, model: this.model});
+    this.addSubview(".follow-modal-anchor", this._followingList);
   },
 
   loadData: function() {
     this.collection.fetch({
               remove: false,
-              data: { page: this._page,
-              id: this.model.id}
+              data: { page: 1,
+              id: this.model.id},
+              success: function() {
+                this.render();
+              }.bind(this)
     });
   },
 
   render: function() {
     var content = this.template({following: this.collection});
     this.$el.html(content);
-    this.collection.each(function(model) {
-      var followView = new ShutterStep.Views.FollowView({model: model});
-      this.$(".user-following-ul").append(followView.render().$el);
-    }.bind(this));
+    this.attachSubviews();
     return this;
   },
 
   events: {
-    "click .menu-item": "showFollowing",
-    "scroll #scroll-following": "loadNextPage"
+    "click .menu-item": "showFollowing"
   },
 
   loadNextPage: function(event) {
-    if($("#scroll-following").height() + $("#scroll-following").scrollTop() >= $(".user-following-ul").height()-20) {
-      if(this._page < this.collection.total_pages) {
-        debugger;
-        this._page = this._page + 1;
-        this.loadData();
+    if($("#scroll-following").height() + $("#scroll-following").scrollTop() >= $(".user-following-ul").height() - 100) {
+      if(this._followingList._page <= this.collection.total_pages) {
+        this._followingList._page = this._followingList._page + 1;
+        this._followingList.loadData();
       }
     }
   },
