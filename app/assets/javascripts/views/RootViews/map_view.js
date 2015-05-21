@@ -7,6 +7,7 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
     this._markers = {};
     this.listenTo(this.collection, 'add', this.addMarker);
     this.listenTo(this.collection, 'remove', this.removeMarker);
+    this.model = new ShutterStep.Models.Picture();
   },
 
   initMap: function(event) {
@@ -96,7 +97,7 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
     if (this._markers[picture.id]) { return };
 
     var image = {
-      url: picture.get('url'),
+      url: picture.get('thumb_image_url'),
       size: new google.maps.Size(30, 30),
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(0, 30),
@@ -133,7 +134,8 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
   events: {
     "submit": "createPicture",
     "click #picture-map": "reset",
-    "click .favorite-picture": "favoritePicture"
+    "click .favorite-picture": "favoritePicture",
+    "change #input-image": "fileInputChange"
   },
 
   favoritePicture: function(event) {
@@ -156,19 +158,35 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
     this.showMarkerInfo(event, marker);
   },
 
+  fileInputChange: function(event){
+    var that = this;
+    var file = event.currentTarget.files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = function(){
+      that.model._image = reader.result;
+    }
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      delete that.model._image;
+    }
+  },
+
   createPicture: function(event) {
     event.preventDefault();
 
     var position = this._submitWindow.position;
     var values = $(event.target).serializeJSON();
-    var picture = new ShutterStep.Models.Picture({
+    this.model.set({
       lat: position.A,
       lng: position.F
     });
-
-    picture.save(values, {
+    this.model.save(values, {
       success: function () {
-        this.collection.add(picture);
+        this.collection.add(this.model);
+        this.model = new ShutterStep.Models.Picture();
         this.closeWindows();
       }.bind(this),
       error: function(error) {

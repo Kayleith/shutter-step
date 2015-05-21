@@ -2,9 +2,8 @@ module Api
   class PicturesController < ApiController
     def create
       @picture = current_user.pictures.new(picture_params)
-
       if @picture.save
-        render json: @picture
+        render :show
       else
         render json: @picture.errors.full_messages, status: :unprocessable_entity
       end
@@ -16,26 +15,28 @@ module Api
       render json: @picture
     end
 
-    def index
-      @pictures = Picture.all.page(params[:page])
-      render :json => {
-        :models => @pictures,
-        :page => params[:page],
-        :total_pages => @pictures.total_pages # thanks kaminari!
-      }
+    def show_by_user
+      @pictures = User.find(params[:id]).pictures
+      @pictures_total = @pictures.count
+      @pictures = @pictures.page(params[:page]).per(20)
+      @page = params[:page].to_i
+      @total_pages = @pictures.total_pages
+      render :search
+    end
+
+    def show
+      @picture = Picture.find(params[:id])
+      render :show
     end
 
     def search
       # @pictures = filter_pictures(filter_options)
       # render json: @pictures.page(params[:page])
       @pictures = Picture.all.page(params[:page]).per(20)
-      picture_totals = Picture.all.count
-      render :json => {
-        :models => @pictures,
-        :page => params[:page],
-        :picture_total => picture_totals,
-        :total_pages => @pictures.total_pages # thanks kaminari!
-      }
+      @pictures_total = Picture.all.count
+      @page = params[:page].to_i
+      @total_pages = @pictures.total_pages # thanks kaminari!
+      render :search
     end
 
     private
@@ -79,7 +80,7 @@ module Api
     end
 
     def picture_params
-      params.require(:picture).permit(:title, :user_id, :description, :url, :lng, :lat)
+      params.require(:picture).permit(:title, :user_id, :description, :image, :lng, :lat)
     end
   end
 end

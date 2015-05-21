@@ -43,8 +43,14 @@ ShutterStep.Views.SidebarView = Backbone.CompositeView.extend({
   },
 
   closeProfile2: function(event) {
-    if($(event.target)[0] === $("div.js-modal-close")[0]) {
+    if(event.target === $("div.js-modal-close")[0]) {
       this.$(".modal").removeClass("open");
+    }
+    if(event.target === $("div.js-modal-close")[1]) {
+      this.$(".modal-following").removeClass("open");
+    }
+    if(event.target === $("div.js-modal-close")[2]) {
+      this.$(".modal-followers").removeClass("open");
     }
   },
 

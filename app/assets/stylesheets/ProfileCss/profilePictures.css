@@ -1,0 +1,35 @@
+.profile-uploaded-pictures {
+  float: right;
+  width: 620px;
+}
+.user-pictures {
+
+}
+
+#scroll-pictures {
+  width: auto;
+  height: 1200px;
+  overflow-y: auto;
+}
+
+.user-pictures-ul {
+
+}
+
+.user-picture-li {
+  display: block;
+  position: relative;
+  width: 600px;
+  height: 600px;
+  overflow: hidden;
+}
+
+.sidebar-pictures {
+  display: block;
+  position: absolute;
+  top: -25%;
+  left: -25%;
+  height: 100%;
+  width: auto;
+  margin: auto;
+}

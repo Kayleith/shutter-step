@@ -36,6 +36,7 @@ ShutterStep.Views.HeaderView = Backbone.CompositeView.extend({
   searchUsers: function(event) {
     this.$(".user-results").addClass("visible");
     var query = this.$(".root-user-search").val();
+    if(query.length < 3) return;
     if (query === "") {
       this.eachSubview(function (subview) {
         subview.remove();

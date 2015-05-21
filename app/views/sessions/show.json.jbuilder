@@ -8,7 +8,8 @@ json.following @current_user.following do |following|
   json.thumb_image_url asset_path(following.avatar.url(:thumb))
 end
 json.pictures @current_user.pictures do |picture|
-	json.extract! picture, :user_id, :title, :description, :url, :lat, :lng,  :created_at, :updated_at
+	json.extract! picture, :user_id, :title, :description, :lat, :lng,  :created_at, :updated_at
+  json.thumb_image_url asset_path(picture.image.url(:thumb))
 end
 
 json.original_image_url asset_path(@current_user.avatar.url(:original))

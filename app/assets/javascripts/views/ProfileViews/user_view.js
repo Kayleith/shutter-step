@@ -6,6 +6,7 @@ ShutterStep.Views.UserView = Backbone.View.extend({
     this._headerView = new ShutterStep.Views.HeaderView({collection: ShutterStep.searchusers});
     this.listenTo(this.model, "sync", this.render);
     this._sidebarView = new ShutterStep.Views.SidebarView({model: this.model});
+    this._sidePictureView = new ShutterStep.Views.SidePictureView({model: this.model});
   },
 
   render: function() {
@@ -13,6 +14,7 @@ ShutterStep.Views.UserView = Backbone.View.extend({
     this.$el.html(content);
     this.$(".root").html(this._headerView.render().$el);
     this.$(".profile-content-sidebar").html(this._sidebarView.render().$el);
+    this.$(".profile-uploaded-pictures").html(this._sidePictureView.render().$el);
     return this;
   },
 

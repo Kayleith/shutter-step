@@ -15,7 +15,7 @@ ShutterStep.Collections.Pictures = Backbone.Collection.extend({
   parse: function(response) {
         this.page = response.page;
         this.total_pages = response.total_pages;
-        this.picture_total = response.picture_total;
+        this.pictures_total = response.pictures_total;
         // deal with any nested resources on response.models and return
         return response.models;
   }

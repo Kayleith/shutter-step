@@ -4,7 +4,6 @@ class CreatePictures < ActiveRecord::Migration
       t.integer :user_id, null: false
       t.string :title, null: false
       t.string :description
-      t.string :url, null: false
       t.float :lat, null: false
       t.float :lng, null: false
       t.boolean :private, default: false

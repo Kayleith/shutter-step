@@ -11,21 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518235728) do
+ActiveRecord::Schema.define(version: 20150521131424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "pictures", force: :cascade do |t|
-    t.integer  "user_id",                     null: false
-    t.string   "title",                       null: false
+    t.integer  "user_id",                            null: false
+    t.string   "title",                              null: false
     t.string   "description"
-    t.string   "url",                         null: false
-    t.float    "lat",                         null: false
-    t.float    "lng",                         null: false
-    t.boolean  "private",     default: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.float    "lat",                                null: false
+    t.float    "lng",                                null: false
+    t.boolean  "private",            default: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "pictures", ["lat"], name: "index_pictures_on_lat", using: :btree

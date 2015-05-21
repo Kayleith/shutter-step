@@ -3,7 +3,7 @@ ShutterStep.Views.FilterFeedView = Backbone.CompositeView.extend({
 
   initialize: function() {
    this._page = 1;
-   this.listenTo(this.collection, 'sync add', this.addPictures);
+   this.listenTo(this.collection, 'sync', this.setUpPictures);
    this.listenTo(this.collection, 'remove', this.removePicture);
   },
 
@@ -34,13 +34,15 @@ ShutterStep.Views.FilterFeedView = Backbone.CompositeView.extend({
     return this;
   },
 
-  addPictures: function () {
-    this.collection.each(function(picture) {
+  setUpPictures: function () {
+    this.eachSubview(function (subview) {
+      subview.remove();
+    });
+    this.collection.each(function(model) {
       var view = new ShutterStep.Views.FilterFeedViewItem({
-        model: picture
-      });
+          model: model})
       this.addSubview('.root-filter-feed-item', view);
-    }.bind(this));
+    }.bind(this))
   },
 
   removePicture: function (picture) {
