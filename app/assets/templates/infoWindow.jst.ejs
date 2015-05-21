@@ -7,8 +7,10 @@
       </div>
       <label><%=user.escape("first_name") %> <%=user.escape("last_name")%></label>
     </a>
-
-    <img src="<%=picture.escape("url")%>">
+    <div class="button-container">
+      <img src="<%=picture.escape("url")%>">
+      <button class="favorite-picture">&#9734</button>
+    </div>
     <p><%=picture.escape("description")%></p>
   </article>
 </section>

@@ -3,7 +3,7 @@ ShutterStep.Views.FilterFeedView = Backbone.CompositeView.extend({
 
   initialize: function() {
    this._page = 1;
-   this.listenTo(this.collection, 'sync', this.addPictures);
+   this.listenTo(this.collection, 'sync add', this.addPictures);
    this.listenTo(this.collection, 'remove', this.removePicture);
   },
 

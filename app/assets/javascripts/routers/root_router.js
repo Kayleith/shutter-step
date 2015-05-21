@@ -14,7 +14,7 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
   },
 
   signIn: function(callback) {
-    $(window).off("**");
+    // $(window).off("**");
     ShutterStep.currentUser.fetch({
       success: function () {
         if (!this._requireSignedOut(callback)) { return; }
@@ -32,7 +32,7 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
   },
 
   root: function() {
-    $(window).off("**");
+    // $(window).off("**");
     var callback = this.root.bind(this);
     ShutterStep.currentUser.fetch({
       success: function () {
@@ -46,7 +46,7 @@ ShutterStep.Routers.RootRouter = Backbone.Router.extend({
   },
 
   userProfile: function(id) {
-    $(window).off("**");
+    // $(window).off("**");
     var callback = this.userProfile.bind(this, id);
     var user = this.collection.getOrFetch(id);
     ShutterStep.currentUser.fetch({

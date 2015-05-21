@@ -22,7 +22,7 @@ ShutterStep.Views.RootView = Backbone.View.extend({
     "mouseenter li.picture-feed": "bouncePicture",
     "mouseleave li.picture-feed": "stopBouncePicture",
     "click li.picture-feed": "showPicture",
-    "click button": "changePage"
+    "click .page-switch": "changePage"
   },
 
   bouncePicture: function(event) {
@@ -37,7 +37,7 @@ ShutterStep.Views.RootView = Backbone.View.extend({
 
   showPicture: function(event) {
     var id = $(event.currentTarget).find("a").data("id");
-    this._mapView.zoom(2);
+    this._mapView.zoom(1);
     this._mapView.showPicture(event, id);
   },
 

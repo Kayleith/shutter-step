@@ -132,7 +132,17 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
 
   events: {
     "submit": "createPicture",
-    "click #picture-map": "reset"
+    "click #picture-map": "reset",
+    "click .favorite-picture": "favoritePicture"
+  },
+
+  favoritePicture: function(event) {
+    var button = $(event.currentTarget);
+    if(button.text() === "☆") {
+      button.text("★");
+    } else if(button.text() === "★") {
+      button.text("☆");
+    }
   },
 
   resetMap: function(event) {
@@ -140,6 +150,7 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
   },
 
   reset: function(event) {
+    if(event.target === $(".favorite-picture")[0]) return;
     var marker = this._markers[$(event.currentTarget).find("article")[0].id];
     this.zoom(23);
     this.showMarkerInfo(event, marker);

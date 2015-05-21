@@ -4,6 +4,19 @@
 #picture-map {
 
 }
+.button-container {
+  display: block;
+  position: relative;
+}
+.favorite-picture {
+  display: block;
+  font-size: 36px;
+  color: #f68a50;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 #pac-input {
   background-color: #fff;
   font-family: Roboto;
