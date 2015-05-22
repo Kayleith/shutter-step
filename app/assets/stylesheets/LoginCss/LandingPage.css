@@ -362,4 +362,21 @@
   height: 900px;
   top: 1000px;
   left: 0px;
+  text-align: center;
+}
+
+.features-title {
+  margin-top: 50px;
+  font-size: 40px;
+  font-weight: 900;
+}
+
+.landing-page-background2 {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  left: 0;
+  top: 1700px;
+  z-index: -1000;
 }
