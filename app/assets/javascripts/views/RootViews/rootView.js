@@ -1,6 +1,6 @@
 ShutterStep.Views.RootView = Backbone.View.extend({
   template: JST['rootView'],
-
+  
   initialize: function() {
     this._headerView = new ShutterStep.Views.HeaderView({collection: ShutterStep.searchusers});
     this._filterView = new ShutterStep.Views.FilterView({collection: this.collection});

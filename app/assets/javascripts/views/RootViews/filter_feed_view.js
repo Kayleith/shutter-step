@@ -1,6 +1,6 @@
 ShutterStep.Views.FilterFeedView = Backbone.CompositeView.extend({
   template: JST['filterFeedView'],
-
+  className: "group",
   initialize: function() {
    this.listenTo(this.collection, 'sync', this.setUpPictures);
    this.listenTo(this.collection, 'remove', this.removePicture);

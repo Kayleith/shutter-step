@@ -40,5 +40,6 @@ ShutterStep.Views.FollowersView = Backbone.CompositeView.extend({
   showFollowers: function(event) {
     this.$("#scroll-followers").scroll(this.loadNextPage.bind(this));
     this.$(".modal-followers").addClass("open");
+    this.$(".modal-screen-followers").addClass("coolmodalzoom");
   }
 });

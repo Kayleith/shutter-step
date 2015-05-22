@@ -20,6 +20,7 @@ ShutterStep.Views.SidebarView = Backbone.CompositeView.extend({
 
     if(ShutterStep.currentUser.following().get(this.model.id)) {
       this.$(".profile-picture button").text("Unfollow");
+      this.$(".profile-picture button").addClass("toUnfollow");
     }
     if(this.model.id === ShutterStep.currentUser.id) {
       this.$(".profile-picture button").addClass("hide-button");
@@ -40,6 +41,7 @@ ShutterStep.Views.SidebarView = Backbone.CompositeView.extend({
 
   openProfile: function(event) {
     this.$(".modal").addClass("open");
+    this.$(".modal-screen-profile").addClass("coolmodalzoom");
   },
 
   closeProfile2: function(event) {
@@ -80,6 +82,7 @@ ShutterStep.Views.SidebarView = Backbone.CompositeView.extend({
         method: "POST",
         success: function () {
           this.$(".profile-picture button").text("Unfollow");
+          this.$(".profile-picture button").addClass("toUnfollow");
           this._followers.add(ShutterStep.currentUser);
           ShutterStep.currentUser.following().add(this.model);
           this._followersView.loadData();
@@ -93,6 +96,7 @@ ShutterStep.Views.SidebarView = Backbone.CompositeView.extend({
         method: "DELETE",
         success: function () {
           this.$(".profile-picture button").text("Follow");
+          this.$(".profile-picture button").removeClass("toUnfollow");
           this._followers.remove(ShutterStep.currentUser);
           ShutterStep.currentUser.following().remove(this.model);
           this._followersView.loadData();

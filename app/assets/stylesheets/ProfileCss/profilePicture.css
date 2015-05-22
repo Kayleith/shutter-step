@@ -16,6 +16,45 @@
   z-index: 2;
 }
 
+.coolmodalzoom {
+  -webkit-animation: coolmodalzoom 1s;
+  animation: coolmodalzoom 1s;
+}
+
+@keyframes coolmodalzoom {
+  from {
+      width: 0;
+      height: 0;
+      position: fixed;
+      background: rgba(0, 0, 0, 0.0);
+      top: 50%;
+      left: 50%;
+      z-index: -1;
+        }
+  to {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+     }
+}
+
+@-webkit-keyframes coolmodalzoom {
+  from {
+      width: 0;
+      height: 0;
+        }
+  to {
+    width: 100%;
+    height: 100%;
+     }
+}
+
 .modal-screen-profile > img {
   position: absolute;
   top: 15%;

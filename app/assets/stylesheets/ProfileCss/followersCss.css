@@ -19,7 +19,7 @@
 #scroll-followers {
   display: block;
   position: absolute;
-  background: white;
+  background: transparent;
   top: 25%;
   left: 35%;
   width: 30%;
@@ -35,12 +35,15 @@
   height: 90px;
   width: auto;
   padding: 10px;
+  color: #09AFD7;
+  opacity: .3;
 }
 
 .user-follower-li:hover {
   height: 80px;
   width: auto;
   padding: 0 15px;
+  opacity: 1;
   background: rgba(0, 0, 0, 0.7);
 }
 

@@ -28,13 +28,22 @@
 }
 
 .pages-out-of-total {
-
+  display: block;
+  color: white;
+  padding: 5px;
+  font-size: 20px;
 }
 
 .number-of-results {
-
+  display: block;
+  padding: 3px 10px;
+  color: #F58345;
 }
-
+.number-out-of-pictures {
+  display: block;
+  padding: 3px 10px;
+  color: #A7A9AC;
+}
 .root-filter-feed-item {
 
 }
@@ -61,7 +70,7 @@
   text-align: center;
   border: 1px solid #09AFD7;
   color: #F58345;
-  background: #49494A;
+  background: #A7A9AC;
   opacity: .3;
   transition: all .5s ease;
 }
