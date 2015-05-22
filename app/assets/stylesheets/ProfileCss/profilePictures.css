@@ -46,7 +46,7 @@
   right: 5px;
   top: 40px;
   display: block;
-  width: 120px;
+  width: 110px;
   height: 400px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -95,15 +95,22 @@
 .user-picture-li {
   display: block;
   position: relative;
+  overflow: hidden;
+  transition: all .5s ease;
   width: 100px;
   height: 100px;
-  overflow: hidden;
+  padding: 0px;
+
+}
+.user-picture-li:hover {
+  width: 70px;
+  height: 70px;
+  padding: 15px;
 }
 
 .sidebar-pictures {
-  display: block;
   height: 100%;
-  width: auto;
+  width: 100%;
 }
 
 .user-picture-li.invisible {
@@ -127,7 +134,7 @@
 
 .modal-picture-container.slideRight {
   position: fixed;
-  left: 100px;
+  left: 110px;
   z-index: 10000000000000;
 }
 
@@ -141,7 +148,7 @@
          left: 0;
         }
   to {
-      left: 100px;
+      left: 110px;
      }
 }
 
@@ -150,7 +157,7 @@
          left: 0;
         }
   to {
-      left: 100px;
+      left: 110px;
      }
 }
 
@@ -219,22 +226,93 @@
 .picture-info {
 
 }
-.picture-description {
-
+.user-picture-description {
+  display: block;
+  position: absolute;
+  left: 110px;
+  bottom: 0px;
+  z-index: 10000000000000;
+  height: 50px;
+  background: rgba(0,0,0,.5);
+  color: #bdc7d8;
+  width: auto;
 }
+
+.slideDown {
+  -webkit-animation: slidepoop 1s;
+  animation: slidepoop 1s;
+}
+
+@keyframes slidepoop {
+  from {
+        bottom: -50px;
+        left: -110px;
+      }
+  to {
+    left: 110px;
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes slidepoop {
+  from {
+        bottom: -50px;
+        left: -110px;
+      }
+  to {
+    left: 110px;
+    bottom: 0;
+  }
+}
+
+
 .picture-title {
 
 }
 .picture-description {
-  display: block;
-  postion: absolute;
-  left: 100px;
-  bottom: 0px;
-  z-index: 10000000000000;
-}
-.picture-user-thumb {
 
 }
+
+.picture-user-thumb {
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  width: 50px;
+  height: 50px;
+  z-index: 20000000000001;
+  border-radius: 50%;
+  transition: all 1s ease;
+  opacity: .7;
+  border: 0px;
+  background: transparent;
+}
+
+.picture-user-thumb:hover {
+  opacity: 1;
+  border: 1px solid black;
+  background: black;
+}
+
+.zoomOut {
+  -webkit-animation: zoomout 1200ms;
+  animation: zoomout 1200ms;
+}
+
+@keyframes zoomout {
+  from {
+        width: 0;
+        height: 0;
+      }
+}
+
+@-webkit-keyframes zoomout {
+  from {
+        width: 0;
+        height: 0;
+      }
+}
+
 .picture-comments {
 
 }

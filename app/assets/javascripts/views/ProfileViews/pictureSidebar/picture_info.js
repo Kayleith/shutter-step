@@ -6,7 +6,7 @@ ShutterStep.Views.PictureInfo = Backbone.CompositeView.extend({
   initialize: function (option) {
     this.user = option.user;
   },
-
+  
   render: function () {
     var content = this.template({picture: this.model, user: this.user});
     this.$el.html(content);

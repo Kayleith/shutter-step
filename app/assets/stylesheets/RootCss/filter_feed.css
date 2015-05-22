@@ -9,8 +9,8 @@
 .thumb {
   display: block;
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   margin: auto;
   border-radius: 5px;
   border: 1px solid #000;
@@ -18,7 +18,6 @@
 }
 
 .thumb > img {
-  margin: auto;
   width: auto;
   height: 100%;
 }

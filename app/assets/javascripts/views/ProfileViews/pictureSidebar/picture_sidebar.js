@@ -50,13 +50,22 @@ ShutterStep.Views.SidePictureView = Backbone.CompositeView.extend({
   },
 
   events: {
-    "mouseover .scroll-pictures": "coolModal",
-    "click .user-picture-li": "openPictureInModal"
+    "mouseenter .scroll-pictures": "coolModal",
+    "click .user-picture-li": "openPictureInModal",
+    "click .picture-user-thumb": "closeModal"
+  },
+
+  closeModal: function () {
+    this.subviews(".cool-modal").each(function(subview) { subview.remove();});
+    $(".cool-modal").empty();
+    $(".cool-modal").removeClass("coolmodalslide");
+    $(".cool-modal").removeClass("open");
+    $(".scroll-pictures").removeClass("coolscrollslide");
+    $(".scroll-pictures").removeClass("left");
+    $(".user-picture-li").removeClass("invisible");
   },
 
   coolModal: function() {
-    this.subviews(".cool-modal").each(function(subview) { subview.remove();});
-
     this.$(".cool-modal").addClass("coolmodalslide");
     this.$(".cool-modal").addClass("open");
     this.$(".scroll-pictures").addClass("coolscrollslide");
@@ -107,9 +116,11 @@ ShutterStep.Views.SidePictureView = Backbone.CompositeView.extend({
             picture.css("top", 0);
 
             this.subviews(".cool-modal").each(function(subview) { subview.remove();});
-            
+
             var pictureInfo = new ShutterStep.Views.PictureInfo({model: picture_obj, user: this.model});
             this.addSubview(".cool-modal", pictureInfo);
+            this.$(".user-picture-description").addClass("slideDown");
+            this.$(".picture-user-thumb").addClass("zoomOut");
           }.bind(this));
       }.bind(this)
     );

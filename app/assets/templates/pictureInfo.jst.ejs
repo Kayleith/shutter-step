@@ -1,12 +1,11 @@
-<ul class="picture-description">
+<ul class="user-picture-description">
   <h1 class="picture-title">
     <%= picture.escape("title") %>
   </h1>
   <p class="picture-description">
     <%= picture.escape("description") %>
   </p>
-
-  <img class="picture-user-thumb" src="<%= user.escape("thumb_img_url") %>"
 </ul>
+<img class="picture-user-thumb" src="<%= user.escape("thumb_image_url") %>"/>
 <ul class="picture-comments">
 </ul>
