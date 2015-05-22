@@ -30,14 +30,14 @@
 
 .user-follow-li {
   display: block;
-  height: 60px;
+  height: 90px;
   width: auto;
 }
 .user-follow-li a {
   float:left;
   display: block;
   height: auto;
-  width: 60px;
+  width: 90px;
 }
 
 .user-follow-li img {

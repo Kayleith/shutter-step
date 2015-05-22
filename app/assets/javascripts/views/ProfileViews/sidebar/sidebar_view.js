@@ -59,6 +59,12 @@ ShutterStep.Views.SidebarView = Backbone.CompositeView.extend({
       this.$(".modal").removeClass("open");
       this.$(".modal-following").removeClass("open");
       this.$(".modal-followers").removeClass("open");
+      $(".cool-modal").empty();
+      $(".cool-modal").removeClass("coolmodalslide");
+      $(".cool-modal").removeClass("open");
+      $(".scroll-pictures").removeClass("coolscrollslide");
+      $(".scroll-pictures").removeClass("left");
+      $(".user-picture-li").removeClass("invisible");
       // this.$("#scroll-following").off("**");
       // this.$("#scroll-followers").off("**");
     }

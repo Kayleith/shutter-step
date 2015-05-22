@@ -1,16 +1,92 @@
 .profile-uploaded-pictures {
-  float: right;
-  width: 620px;
 }
 .user-pictures {
-
 }
 
-#scroll-pictures {
-  width: auto;
-  height: 1200px;
+.cool-modal {
+  display: none;
+}
+
+.cool-modal.open {
+  display: block;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.coolmodalslide {
+  -webkit-animation: slidein 1s;
+  animation: slidein 1s;
+}
+
+@keyframes slidein {
+  from {
+         left: 100%;
+        }
+  to {
+      left: 0;
+     }
+}
+
+@-webkit-keyframes slidein {
+  from {
+         left: 100%;
+        }
+  to {
+      left: 0;
+     }
+}
+
+.scroll-pictures {
+  position: absolute;
+  right: 5px;
+  top: 40px;
+  display: block;
+  width: 120px;
+  height: 400px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
+
+.scroll-pictures.left {
+  right: -100%;
+  left: 0;
+  z-index: 10000;
+  top: 0;
+  height: 100%;
+}
+
+.coolscrollslide {
+  -webkit-animation: slidescrollin 1s;
+  animation: slidescrollin 1s;
+}
+
+@keyframes slidescrollin {
+  from {
+         height: 400px;
+         left: 100%;
+        }
+  to {
+      left: 0;
+      height: 100%;
+     }
+}
+
+@-webkit-keyframes slidescrollin {
+  from {
+         height: 400px;
+         left: 100%;
+        }
+  to {
+      left: 0;
+      height: 100%;
+     }
+}
+
 
 .user-pictures-ul {
 
@@ -19,17 +95,123 @@
 .user-picture-li {
   display: block;
   position: relative;
-  width: 600px;
-  height: 600px;
+  width: 100px;
+  height: 100px;
   overflow: hidden;
 }
 
 .sidebar-pictures {
   display: block;
-  position: absolute;
-  top: -25%;
-  left: -25%;
   height: 100%;
   width: auto;
-  margin: auto;
+}
+
+.user-picture-li.invisible {
+  opacity: 0;
+}
+
+.modal-picture-container {
+  display: block;
+  position: absolute;
+  left: 0px;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.main-modal-picture {
+  display: block;
+  height: 100%;
+  width: auto;
+}
+
+.modal-picture-container.slideRight {
+  position: fixed;
+  left: 100px;
+  z-index: 10000000000000;
+}
+
+.animateRight {
+  -webkit-animation: animateright 500ms;
+  animation: animateright 500ms;
+}
+
+@keyframes animateright {
+  from {
+         left: 0;
+        }
+  to {
+      left: 100px;
+     }
+}
+
+@-webkit-keyframes animateright {
+  from {
+         left: 0;
+        }
+  to {
+      left: 100px;
+     }
+}
+
+.modal-picture-container.slideRight.growPicture {
+  width: auto;
+  height: 100%;
+  overflow: visible;
+}
+
+.animateGrow {
+  -webkit-animation: animategrow 500ms;
+  animation: animategrow 500ms;
+}
+
+@keyframes animategrow {
+  from {  width: 100px;
+          height: 100px;}
+  to {
+    overflow: visible;
+    top: 0px;
+    width: auto;
+    height: 100%;
+  }
+}
+
+@-webkit-keyframes animategrow {
+  from {  width: 100px;
+          height: 100px;}
+  to {
+    overflow: visible;
+    top: 0px;
+    width: auto;
+    height: 100%;
+  }
+}
+
+.modal-picture-container.slideRight.growPicture.shrinkPicture {
+  width: 0;
+  height: 0;
+  top: 0;
+}
+
+.animateShrink {
+  -webkit-animation: animateshrink 500ms;
+  animation: animateshrink  500ms;
+}
+
+@keyframes animateshrink  {
+  from {
+    width: auto;
+    height: 100%;
+  }
+  to {  width: 0px;
+          height: 0px;}
+}
+
+@-webkit-keyframes animateshrink  {
+  from {
+    width: auto;
+    height: 100%;
+  }
+  to {  width: 0px;
+          height: 0px;}
 }
