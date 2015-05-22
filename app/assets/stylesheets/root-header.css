@@ -19,17 +19,14 @@
 .user-results {
   display: none;
   position: absolute;
-  width: 500px;
-  left: 60px;
+  width: 405px;
+  left: 88px;
   top: 33px;
   background: transparent;
   max-height: 300px;
   overflow-y: auto;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 .visible {
@@ -37,18 +34,14 @@
 }
 
 .result {
-  padding: 10px 0;
+  padding: 10px 10px;
   background: white;
   color:black;
 }
 .result:hover {
   background: #E9EAED;
 }
-.result:first-child {
-  border-top: 1px solid black;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-}
+
 .user-search-name {
 
 }
@@ -89,4 +82,10 @@
 
 .root-ul li{
   float: left;
+  margin-top: 5px;
+  padding: 8px;
+}
+
+.root-ul li:hover {
+  color: #f68a50;
 }

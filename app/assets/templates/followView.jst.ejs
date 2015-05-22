@@ -1,6 +1,6 @@
-<a href="#users/<%=follow.id%>">
+<a href="#users/<%=follow.id%>" class="group">
   <img src="<%= follow.escape("thumb_image_url")%>" />
+  <ul>
+  <label><%= follow.escape("first_name") %> <%= follow.escape("last_name") %></label>
+  </ul>
 </a>
-<ul>
-<label><%= follow.escape("first_name") %> <%= follow.escape("last_name") %></label>
-</ul>

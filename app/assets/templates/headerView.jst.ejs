@@ -7,11 +7,17 @@
 
     <input class="root-user-search" type="text" name="name"/>
     <ul class="user-results"></ul>
-    <button class="user-search">search</button>
 
     <ul class="root-ul group">
       <li>
-
+        <a class="home" href="#home">
+        <button>Home</button>
+        </a>
+      </li>
+      <li>
+        <a class="profile" href="#users/<%=currentuser.id%>">
+        <button>Profile</button>
+        </a>
       </li>
       <li>
         <button class="sign-out">Sign Out</button>

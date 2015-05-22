@@ -6,7 +6,6 @@ ShutterStep.Views.SidePictureView = Backbone.CompositeView.extend({
   render: function() {
     var content = this.template();
     this.$el.html(content);
-    this.$(".scroll-pictures").scroll(this.loadNextPage.bind(this));
     this.collection.each(function(model) {
       var pictureView = new ShutterStep.Views.PictureView({model: model});
       this.addSubview(".user-pictures-ul", pictureView);
@@ -27,6 +26,7 @@ ShutterStep.Views.SidePictureView = Backbone.CompositeView.extend({
     this.collection = new ShutterStep.Collections.UserPictures();
     this._page = 1;
     this.loadData();
+    this.$(".scroll-pictures").scroll(this.loadNextPage.bind(this));
     this.listenToOnce(this.collection, 'sync', this.render);
     this.listenTo(this.collection, "add", this.addpicture);
     this.listenTo(this.collection, "remove", this.removepicture);
@@ -56,7 +56,7 @@ ShutterStep.Views.SidePictureView = Backbone.CompositeView.extend({
   },
 
   closeModal: function () {
-    this.subviews(".cool-modal").each(function(subview) { subview.remove();});
+    // this.subviews(".cool-modal").each(function(subview) { subview.remove();});
     $(".cool-modal").empty();
     $(".cool-modal").removeClass("coolmodalslide");
     $(".cool-modal").removeClass("open");

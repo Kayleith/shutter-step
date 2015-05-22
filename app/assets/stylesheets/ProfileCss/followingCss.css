@@ -23,28 +23,39 @@
   top: 25%;
   left: 35%;
   width: 30%;
-  height: 50%;
+  height: auto;
+  max-height: 50%;
   z-index: 3;
   overflow-y: auto;
 }
 
 .user-follow-li {
   display: block;
+  poistion: relative;
+  transition: all .5s ease;
   height: 90px;
   width: auto;
+  padding: 10px;
 }
+
+.user-follow-li:hover {
+  height: 80px;
+  width: auto;
+  padding: 0 15px;
+  background: rgba(0, 0, 0, 0.7);
+}
+
 .user-follow-li a {
-  float:left;
   display: block;
   height: auto;
-  width: 90px;
+  width: auto;
 }
 
 .user-follow-li img {
   display: block;
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 80px;
 }
 .user-follow-li ul {
-  float: left;
+  display:block;
 }

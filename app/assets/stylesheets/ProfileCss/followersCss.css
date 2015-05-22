@@ -30,22 +30,31 @@
 
 .user-follower-li {
   display: block;
+  poistion: relative;
+  transition: all .5s ease;
   height: 90px;
   width: auto;
   padding: 10px;
 }
+
+.user-follower-li:hover {
+  height: 80px;
+  width: auto;
+  padding: 0 15px;
+  background: rgba(0, 0, 0, 0.7);
+}
+
 .user-follower-li a {
-  float: left;
   display: block;
   height: auto;
-  width: 90px;
+  width: auto;
 }
 
 .user-follower-li img {
   display: block;
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 80px;
 }
 .user-follower-li ul {
-  float: left;
+  display: block
 }
