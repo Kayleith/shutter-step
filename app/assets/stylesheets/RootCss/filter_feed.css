@@ -1,15 +1,15 @@
 .picture-feed {
   float: left;
-  width: 25%;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   text-align: center;
 }
 
 .thumb {
   display: block;
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   margin: auto;
   border-radius: 5px;
   border: 1px solid #000;
@@ -17,7 +17,7 @@
 }
 
 .thumb > img {
-  width: auto;
+  width: 150px;
   height: 100%;
 }
 

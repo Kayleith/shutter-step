@@ -16,6 +16,7 @@
 //= require backbone
 //= require shutter_step
 //= require jquery.serializejson
+//= require js-info-bubble
 //= require_tree ../templates
 //= require_tree ./utils
 //= require_tree ./models

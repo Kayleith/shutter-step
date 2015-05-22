@@ -290,8 +290,8 @@
 
 .picture-user-thumb:hover {
   opacity: 1;
-  border: 1px solid black;
-  background: black;
+  border: 1px solid #F58345;
+  background: #09AFD7;
 }
 
 .zoomOut {

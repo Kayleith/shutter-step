@@ -14,9 +14,9 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
   initMap: function(event) {
     var mapOptions = {
           center: { lat: 0, lng: 0},
-          zoom: 1,
+          zoom: 2,
           disableDefaultUI: true,
-          minZoom: 1
+          minZoom: 2
         };
 
     this._map = new google.maps.Map(this.el,mapOptions);
@@ -85,10 +85,12 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
     var placePosition = places[0].geometry.location;
 
     this.closeWindows();
-    this._submitWindow = new google.maps.InfoWindow({
+    this._submitWindow = new InfoBubble({
       content: JST['submitWindow'](),
-      position: placePosition
+      position: placePosition,
+      closeSrc: ShutterStep.x
     });
+    this._submitWindow.setMaxWidth(1200);
     this.zoom(23);
     this._map.panTo(placePosition);
     this._submitWindow.open(this._map);
@@ -124,10 +126,14 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
   createPictureForm: function (event) {
     var clickPosition = event.latLng;
     this.closeWindows();
-    this._submitWindow = new google.maps.InfoWindow({
+    this._submitWindow = new InfoBubble({
       content: JST['submitWindow'](),
-      position: clickPosition
+      position: clickPosition,
+      closeSrc: ShutterStep.x
     });
+
+    this._submitWindow.setMaxWidth(1200);
+
     this._map.panTo(clickPosition);
     this._submitWindow.open(this._map);
   },
@@ -149,7 +155,7 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
   },
 
   resetMap: function(event) {
-    this._map.setOptions({center: { lat: 0, lng: 0}, zoom: 1});
+    this._map.setOptions({center: { lat: 0, lng: 0}, zoom: 2});
   },
 
   reset: function(event) {
@@ -225,10 +231,11 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
     user.fetch({
       success: function() {
         this.closeWindows();
-        this._infoWindow = new google.maps.InfoWindow({
-          content: JST['infoWindow']({picture: picture, user: user})
+        this._infoWindow = new InfoBubble({
+          content: JST['infoWindow']({picture: picture, user: user}),
+          closeSrc: ShutterStep.x
         });
-        this._map.panTo(marker.position);
+        this._infoWindow.setMaxWidth(1200);
         this._infoWindow.open(this._map, marker);
       }.bind(this)
     });

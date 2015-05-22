@@ -43,6 +43,7 @@ ShutterStep.Views.HeaderView = Backbone.CompositeView.extend({
       $(".user-results").removeClass("visible");
       return;
     }
+    if(query.length < 2) return;
     this.collection.fetch({
       traditional: true,
       data: {query: query}

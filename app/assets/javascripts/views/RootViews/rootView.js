@@ -15,7 +15,6 @@ ShutterStep.Views.RootView = Backbone.View.extend({
     this.$(".root-filter-feed").html(this._filterFeedView.$el);
     this.$(".root-map").html(this._mapView.$el);
     this.$(".root-filter-options").html(this._filterView.render().$el);
-    this._mapView.initMap();
     return this;
   },
 
@@ -38,6 +37,9 @@ ShutterStep.Views.RootView = Backbone.View.extend({
 
   search: function(event) {
     event.preventDefault();
+    if(!this._mapView._map) {
+      this._mapView.initMap();
+    }
     var options = $(".filter-options-checkboxes-cool").find('input:checked');
     var search = {};
     options.toArray().forEach(function(option) { search[$(option).data("options-id")] = $(option).data("options-id")});
