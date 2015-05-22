@@ -32,8 +32,31 @@ module Api
     def search
       # @pictures = filter_pictures(filter_options)
       # render json: @pictures.page(params[:page])
-      @pictures = Picture.all.page(params[:page]).per(20)
-      @pictures_total = Picture.all.count
+
+      @pictures = Picture.all
+
+      if(!params[:search].nil? && params[:search][:all].nil?)
+        pictures = []
+        if(params[:search][:following])
+          current_user.following.each do |follow|
+            pictures.concat(follow.pictures)
+          end
+        end
+        if(params[:search][:followers])
+          current_user.following.each do |follower|
+            pictures.concat(follower.pictures)
+          end
+        end
+        if(params[:search][:personal])
+          pictures.concat(current_user.pictures)
+        end
+
+        @pictures = pictures
+
+      end
+
+      @pictures_total = @pictures.count
+      @pictures = Kaminari.paginate_array(@pictures).page(params[:page]).per(20)
       @page = params[:page].to_i
       @total_pages = @pictures.total_pages # thanks kaminari!
       render :search

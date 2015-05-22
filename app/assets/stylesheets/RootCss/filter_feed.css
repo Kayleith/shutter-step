@@ -1,8 +1,7 @@
 .picture-feed {
-  padding: 5px;
   float: left;
-  width: 23%;
-  height: 23%;
+  width: 25%;
+  height: 300px;
   text-align: center;
 }
 
@@ -34,6 +33,9 @@
 
 }
 .paginate-buttons {
+  display: block;
+  width: 350px;
+  margin: 0 auto;
   margin-bottom: 20px;
 }
 

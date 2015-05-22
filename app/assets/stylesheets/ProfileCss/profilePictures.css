@@ -128,8 +128,8 @@
 
 .main-modal-picture {
   display: block;
-  height: 100%;
-  width: auto;
+  height: auto;
+  width: 100%;
 }
 
 .modal-picture-container.slideRight {
@@ -162,8 +162,8 @@
 }
 
 .modal-picture-container.slideRight.growPicture {
-  width: auto;
-  height: 100%;
+  height: auto;
+  width: 100%;
   overflow: visible;
 }
 
@@ -178,8 +178,8 @@
   to {
     overflow: visible;
     top: 0px;
-    width: auto;
-    height: 100%;
+    height: auto;
+    width: 100%;
   }
 }
 
@@ -189,8 +189,8 @@
   to {
     overflow: visible;
     top: 0px;
-    width: auto;
-    height: 100%;
+    height: auto;
+    width: 100%;
   }
 }
 
@@ -207,8 +207,8 @@
 
 @keyframes animateshrink  {
   from {
-    width: auto;
-    height: 100%;
+    height: auto;
+    width: 100%;
   }
   to {  width: 0px;
           height: 0px;}
@@ -216,11 +216,11 @@
 
 @-webkit-keyframes animateshrink  {
   from {
-    width: auto;
-    height: 100%;
+    height: auto;
+    width: 100%;
   }
   to {  width: 0px;
-          height: 0px;}
+        height: 0px;}
 }
 
 .picture-info {
@@ -312,7 +312,21 @@
         height: 0;
       }
 }
-
+.sliver-bar {
+  display: block;
+  position: fixed;
+  right: 100px;
+  width: 10px;
+  top: 0;
+  height: 100%;
+  background: black;
+  z-index: 700000000000;
+}
 .picture-comments {
-
+  display: none;
+  position: fixed;
+  left: 100%;
+  top: 0;
+  height: 100%;
+  width: 300px;
 }

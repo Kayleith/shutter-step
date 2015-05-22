@@ -4,6 +4,7 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
   },
 
   initialize: function(options) {
+    this._parent = options.parent;
     this._markers = {};
     this.listenTo(this.collection, 'add', this.addMarker);
     this.listenTo(this.collection, 'remove', this.removeMarker);
@@ -188,6 +189,7 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
         this.collection.add(this.model);
         this.model = new ShutterStep.Models.Picture();
         this.closeWindows();
+        this._parent._filterView.updateData();
       }.bind(this),
       error: function(error) {
         alert(error);

@@ -3,8 +3,9 @@ ShutterStep.Views.RootView = Backbone.View.extend({
 
   initialize: function() {
     this._headerView = new ShutterStep.Views.HeaderView({collection: ShutterStep.searchusers});
+    this._filterView = new ShutterStep.Views.FilterView({collection: this.collection});
     this._filterFeedView = new ShutterStep.Views.FilterFeedView({collection: this.collection});
-    this._mapView = new ShutterStep.Views.MapView({collection: this.collection});
+    this._mapView = new ShutterStep.Views.MapView({collection: this.collection, parent: this});
   },
 
   render: function() {
@@ -13,8 +14,8 @@ ShutterStep.Views.RootView = Backbone.View.extend({
     this.$(".root").html(this._headerView.render().$el);
     this.$(".root-filter-feed").html(this._filterFeedView.$el);
     this.$(".root-map").html(this._mapView.$el);
+    this.$(".root-filter-options").html(this._filterView.render().$el);
     this._mapView.initMap();
-    this._filterFeedView.updateData();
     return this;
   },
 
@@ -22,7 +23,25 @@ ShutterStep.Views.RootView = Backbone.View.extend({
     "mouseenter li.picture-feed": "bouncePicture",
     "mouseleave li.picture-feed": "stopBouncePicture",
     "click li.picture-feed": "showPicture",
-    "click .page-switch": "changePage"
+    "click .page-switch": "changePage",
+    "click .picture-search": "search",
+    "click .filter-option-checkbox-all":'clicked',
+    "click .filter-option-checkbox":'unclicked'
+  },
+
+  clicked: function(event) {
+    $(".filter-option-checkbox").prop('checked', false);
+  },
+  unclicked: function(event) {
+    $(".filter-option-checkbox-all").prop('checked', false);
+  },
+
+  search: function(event) {
+    event.preventDefault();
+    var options = $(".filter-options-checkboxes-cool").find('input:checked');
+    var search = {};
+    options.toArray().forEach(function(option) { search[$(option).data("options-id")] = $(option).data("options-id")});
+    this._filterView.search(search);
   },
 
   bouncePicture: function(event) {
@@ -47,13 +66,13 @@ ShutterStep.Views.RootView = Backbone.View.extend({
     this._filterFeedView.$el.scrollTop(0);
 
     if(text === "<") {
-      this._filterFeedView.leftPage();
+      this._filterView.leftPage();
     } else if(text === ">") {
-      this._filterFeedView.rightPage();
+      this._filterView.rightPage();
     } else {
-      this._filterFeedView.setPage(parseInt(text));
+      this._filterView.setPage(parseInt(text));
     }
-    this._filterFeedView.updateData();
+    this._filterView.updateData();
   },
 
   remove: function () {
@@ -61,5 +80,6 @@ ShutterStep.Views.RootView = Backbone.View.extend({
     this._mapView.remove();
     this._filterFeedView.remove();
     this._headerView.remove();
+    this._filterView.remove();
   }
 });
