@@ -71,3 +71,8 @@
    display: block;
    clear: both;
  }
+
+ .currentView {
+   display: block;
+   position: relative;
+ }

@@ -2,6 +2,7 @@
   background: transparent;
   position: relative;
   width: 100%;
+  height: 100%;
   min-width: 1600px;
 }
 
@@ -22,8 +23,8 @@
 }
 
 .animationbackground {
-  -webkit-animation: fadeinbackground 2s;
-  animation: fadeinbackground 2s;
+  -webkit-animation: fadeinbackground 1200ms;
+  animation: fadeinbackground 1200ms;
 }
 
 @keyframes fadeinbackground {
@@ -41,8 +42,8 @@
 }
 
 .animationbackground-r {
-  -webkit-animation: fadeinbackground-r 2s;
-  animation: fadeinbackground-r 2s;
+  -webkit-animation: fadeinbackground-r 1200ms;
+  animation: fadeinbackground-r 1200ms;
 }
 
 @keyframes fadeinbackground-r {
@@ -78,8 +79,8 @@
 .remove-border {
   border: 0;
   border-radius: 0;
-  -webkit-animation: removeborder 2s;
-  animation: removeborder 2s;
+  -webkit-animation: removeborder 1200ms;
+  animation: removeborder 1200ms;
 }
 
 @keyframes removeborder {
@@ -107,8 +108,8 @@
 }
 
 .add-border {
-  -webkit-animation: addborder 2s;
-  animation: addborder 2s;
+  -webkit-animation: addborder 1200ms;
+  animation: addborder 1200ms;
 }
 
 @keyframes addborder {
@@ -144,8 +145,8 @@
 
 .animationcolor {
   color: #49494A;
-  -webkit-animation: fadeincolor 2s;
-  animation: fadeincolor 2s;
+  -webkit-animation: fadeincolor 1200ms;
+  animation: fadeincolor 1200ms;
 }
 
 @keyframes fadeincolor {
@@ -160,8 +161,8 @@
 
 .animationcolor-r {
   color: #A7A9AC;
-  -webkit-animation: fadeincolor-r 2s;
-  animation: fadeincolor-r 2s;
+  -webkit-animation: fadeincolor-r 1200ms;
+  animation: fadeincolor-r 1200ms;
 }
 
 @keyframes fadeincolor-r {
@@ -178,6 +179,10 @@
   float: left;
   margin-top: 40px;
   padding: 0 13px;
+}
+
+.landing-page-text.selected-text {
+  color: #F58345;
 }
 
 .landing-page-ul li{
@@ -208,7 +213,7 @@
 
 .landing-page-background {
   display: block;
-  position: absolute;
+  position: fixed;
   width: 100%;
   z-index: -1000;
 }
@@ -340,4 +345,21 @@
   font-size: 12px;
   padding: 7px 73px;
   margin-bottom: 20px;
+}
+
+.banner-for-logo {
+  width: 100%;
+  height: 110px;
+  display: block;
+  background: white;
+}
+
+.landing-page-features {
+  width: 100%;
+  position: absolute;
+  display: block;
+  background: white;
+  height: 900px;
+  top: 1000px;
+  left: 0px;
 }
