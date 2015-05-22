@@ -1,23 +1,29 @@
 .picture-feed {
   float: left;
-  width: 200px;
-  height: 200px;
+  width: 302px;
+  height: 302px;
+  padding: 10px;
+  border: 1px solid #09AFD7;
   text-align: center;
+  transition: all .5s ease;
 }
-
+.picture-feed:hover {
+  padding: 0px;
+  margin: 10px;
+  border-radius: 5px;
+  border-color: #F58345;
+}
 .thumb {
   display: block;
   position: relative;
-  width: 150px;
-  height: 150px;
-  margin: auto;
+  width: 300px;
+  height: 300px;
   border-radius: 5px;
-  border: 1px solid #000;
   overflow: hidden;
 }
 
 .thumb > img {
-  width: 150px;
+  width: auto;
   height: 100%;
 }
 
@@ -34,15 +40,31 @@
 }
 .paginate-buttons {
   display: block;
-  width: 350px;
-  margin: 0 auto;
-  margin-bottom: 20px;
+  width: 32px;
+  height: 288px;
+  position: absolute;
+  right: 13px;
+  top: 0px;
 }
 
-.paginate-buttons button{
+.page-switch1 {
+  display: block;
   width: 30px;
   height: 30px;
   text-align: center;
-  border: 1px solid #FF0000;
-  background: #E9EAED;
+  opacity: .3;
+}
+.page-switch{
+  display: block;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border: 1px solid #09AFD7;
+  color: #F58345;
+  background: #49494A;
+  opacity: .3;
+  transition: all .5s ease;
+}
+.page-switch:hover {
+  opacity: 1;
 }

@@ -53,14 +53,14 @@
 				<% } %>
 
 			<% } %>
-			<label>...</label>
+			<button class="page-switch1">...</button>
 			<button class="page-switch"><%= pictures.total_pages %></button>
 			<button class="page-switch">></button>
 
 		<% } else if(pictures.total_pages - pictures.page < 4) { %>
 			<button class="page-switch"><</button>
 			<button class="page-switch">1</button>
-			<label>...</label>
+			<button class="page-switch1">...</button>
 
 			<% if(pictures.total_pages - pictures.page == 3) { %>
 
@@ -86,11 +86,11 @@
 		<% } else if(pictures.page - 4 >= 1 || pictures.total_pages - pictures.page >= 4) { %>
 			<button class="page-switch"><</button>
 			<button class="page-switch">1</button>
-			<label>...</label>
+			<button class="page-switch1">...</button>
 			<button class="page-switch"><%= pictures.page - 1 %></button>
 			<button class="page-switch"><%= pictures.page %></button>
 			<button class="page-switch"><%= parseInt(pictures.page) + 1 %></button>
-			<label>...</label>
+			<button class="page-switch1">...</button>
 			<button class="page-switch"><%= pictures.total_pages %></button>
 			<button class="page-switch">></button>
 		<% } %>

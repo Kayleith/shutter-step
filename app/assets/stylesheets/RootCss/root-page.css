@@ -41,7 +41,8 @@
 .root-filter-feed {
   width: 100%;
   height: 70%;
-  float:right;
+  display: block;
+  position: relative;
 }
 
 .root-filter-feed div {
