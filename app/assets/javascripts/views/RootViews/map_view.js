@@ -97,6 +97,7 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
   },
 
   addMarker: function (picture) {
+    this.closeWindows();
     if (this._markers[picture.id]) { return };
 
     var image = {

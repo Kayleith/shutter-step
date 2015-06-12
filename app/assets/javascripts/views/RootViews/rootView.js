@@ -1,6 +1,6 @@
 ShutterStep.Views.RootView = Backbone.View.extend({
   template: JST['rootView'],
-  
+
   initialize: function() {
     this._headerView = new ShutterStep.Views.HeaderView({collection: ShutterStep.searchusers});
     this._filterView = new ShutterStep.Views.FilterView({collection: this.collection});
@@ -15,6 +15,7 @@ ShutterStep.Views.RootView = Backbone.View.extend({
     this.$(".root-filter-feed").html(this._filterFeedView.$el);
     this.$(".root-map").html(this._mapView.$el);
     this.$(".root-filter-options").html(this._filterView.render().$el);
+    this.search();
     return this;
   },
 
@@ -36,7 +37,6 @@ ShutterStep.Views.RootView = Backbone.View.extend({
   },
 
   search: function(event) {
-    event.preventDefault();
     if(!this._mapView._map) {
       this._mapView.initMap();
     }

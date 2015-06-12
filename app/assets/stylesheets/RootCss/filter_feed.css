@@ -61,17 +61,18 @@
   width: 30px;
   height: 30px;
   text-align: center;
-  opacity: .3;
+  opacity: .7;
+  color: #09AFD7;
 }
 .page-switch{
   display: block;
   width: 30px;
   height: 30px;
   text-align: center;
-  border: 1px solid #09AFD7;
-  color: #F58345;
-  background: #A7A9AC;
-  opacity: .3;
+  border: 1px solid #A7A9AC;
+  color: #09AFD7;
+  background: #F58345;
+  opacity: .7;
   transition: all .5s ease;
 }
 .page-switch:hover {

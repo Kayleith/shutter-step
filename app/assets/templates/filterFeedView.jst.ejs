@@ -22,7 +22,7 @@
 	</h3>
 </section>
 <section class="paginate-buttons">
-	<% if(pictures.total_pages >= 1) { %>
+	<% if(pictures.total_pages > 3) { %>
 		<% if(pictures.page < 5) { %>
 
 			<% if(pictures.page != 1) { %>
@@ -93,6 +93,10 @@
 			<button class="page-switch1">...</button>
 			<button class="page-switch"><%= pictures.total_pages %></button>
 			<button class="page-switch">></button>
+		<% } %>
+	<% } else { %>
+		<% for(var i = 1; i <= pictures.total_pages; i++) { %>
+			<button class="page-switch"><%= i %></button>
 		<% } %>
 	<% } %>
 </section>
