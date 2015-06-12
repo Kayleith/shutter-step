@@ -142,7 +142,7 @@ ShutterStep.Views.MapView = Backbone.CompositeView.extend({
     "submit": "createPicture",
     "click #picture-map": "reset",
     "click .favorite-picture": "favoritePicture",
-    "change #input-image": "fileInputChange"
+    "change .custom-file-input": "fileInputChange"
   },
 
   favoritePicture: function(event) {
