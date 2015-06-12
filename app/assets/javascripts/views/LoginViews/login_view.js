@@ -17,21 +17,21 @@ ShutterStep.Views.SignIn = Backbone.View.extend({
     $(window).scrollTop(0);
   },
   feature: function() {
-    $(window).scrollTop(901);
+    $(window).scrollTop(951);
   },
 
   ourteam: function() {
-    $(window).scrollTop(1701);
+    $(window).scrollTop(1751);
   },
 
   header: function() {
     this.$(".landing-page-text").removeClass("selected-text");
-    if($(window).scrollTop() > 1700) {
+    if($(window).scrollTop() >= 1400) {
       this.$(".landing-page-text3").addClass("selected-text");
-    } else if($(window).scrollTop() > 900) {
+    } else if($(window).scrollTop() > 600) {
       this.$(".landing-page-text2").addClass("selected-text");
 
-    } else if($(window).scrollTop() < 900) {
+    } else if($(window).scrollTop() < 600) {
       this.$(".landing-page-text1").addClass("selected-text");
     }
     if($(window).scrollTop() > 2) {
