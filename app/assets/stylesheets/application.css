@@ -81,3 +81,8 @@
    width: 100%;
    min-width: 800px;
  }
+ button.demo {
+   color: black;
+   background: red;
+   text-shadow: none;
+ }

@@ -9,6 +9,7 @@ ShutterStep.Views.SignIn = Backbone.View.extend({
   events: {
     "submit .landing-page-sign-in-part-form": "signIn",
     "submit .landing-page-sign-up-part-form": "signUp",
+    "submit .demo-form": "demo",
     "click .landing-page-text1": "home",
     "click .landing-page-text2": "feature",
     "click .landing-page-text3": "ourteam",
@@ -75,6 +76,17 @@ ShutterStep.Views.SignIn = Backbone.View.extend({
       error: function(data){
         alert("Form invalid. Let the user know what went wrong.");
         console.log(data);
+      }
+    });
+  },
+  demo: function(event) {
+    event.preventDefault();
+    ShutterStep.currentUser.signIn({
+      name: "robot1",
+      password: "robotsrule",
+      success: this.cameraTransition.bind(this),
+      error: function(){
+        alert("Wrong username/password combination. Please try again.");
       }
     });
   },
